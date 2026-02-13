@@ -1,1887 +1,313 @@
-<html class="h-full" lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DinDin - Assistente Financeiro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin="anonymous"
-    />
-    <link
-      id="google-fonts-link"
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&amp;family=Source+Sans+Pro:wght@300;400;500;600;700&amp;display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/8e98006f77.js"
-      crossorigin="anonymous"
-    ></script>
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiDi - Assistente Pessoal Inteligente</title>
+    <meta name="description" content="DiDi é seu assistente pessoal baseado em IA, acessível via WhatsApp 24/7. Gerencie emails, calendário, lembretes, notas e muito mais.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      :root {
-        --accent-color: #ff5722;
-        --accent2-color: #ffc107;
-        --accent3-color: #4caf50;
-        --accent4-color: #6200ea;
-        --primary-color: #6cd56e;
-        --dark-text-color: #333333;
-        --gray-text-color: #8c8c8c;
-        --button-padding-x: 15px;
-        --button-padding-y: 10px;
-        --font-family-body: "Source Sans Pro", sans-serif;
-        --light-text-color: #ffffff;
-        --dark-border-color: #444c53;
-        --light-border-color: #bec6cf;
-        --font-family-heading: "Nunito Sans", sans-serif;
-        --button-rounded-radius: 5px;
-        --dark-background-color: #222222;
-        --light-background-color: #e3f2fd;
-        --medium-background-color: #cfe9fd;
-        --primary-button-bg-color: #007bff;
-        --primary-button-text-color: #ffffff;
-        --secondary-button-bg-color: #eeeeee;
-        --secondary-button-text-color: #007bff;
-        --primary-button-hover-bg-color: #0056d2;
-        --primary-button-hover-text-color: #ffffff;
-        --secondary-button-hover-bg-color: #dddddd;
-        --secondary-button-hover-text-color: #0056d2;
-      }
-    </style>
-    <style>
-      .hovered-element {
-        outline: #3871e0 dashed 2px;
-      }
-
-      .clicked-element {
-        outline: #3871e0 solid 2px;
-      }
-
-      .clicked-code-section {
-        border: #3b82f6 solid 2px;
-      }
-    </style>
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://landingsite-app-public.s3.us-east-2.amazonaws.com/logos/user/31ad16c1-0ce9-4466-b54c-8c46498794ec/3fc1833f-5fc8-4586-9530-a1373198a46a-favicon-0.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      type="image/png"
-      href="https://landingsite-app-public.s3.us-east-2.amazonaws.com/logos/user/31ad16c1-0ce9-4466-b54c-8c46498794ec/3fc1833f-5fc8-4586-9530-a1373198a46a-favicon-0.png"
-    />
-  </head>
-  <body class="h-full bg-white">
     <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '643297121617916',
-          xfbml      : true,
-          version    : 'v22.0'
-        });
-        FB.AppEvents.logPageView();
-      };
-    
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                    }
+                }
+            }
+        }
     </script>
-    <div class="frame-root">
-      <div class="frame-content">
-        <div class="[font-family:var(--font-family-body)]">
-          <div>
-            <header
-              class="relative z-50 w-full bg-[#F5F8FF] py-6 md:py-5 lg:py-8 code-section"
-              id="sx2rbch"
-            >
-              <div class="mx-auto w-full max-w-[1206px] px-[18px]">
-                <div class="flex items-center justify-between">
-                  <a
-                    href="/"
-                    class="text-xl font-semibold text-[var(--primary-color)] [font-family:var(--font-family-heading)] sm:text-3xl"
-                    data-logo=""
-                    ><img
-                      src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/27be2494-fe05-4138-8fb8-a44b72736600/publicContain"
-                      alt="DinDin Logo"
-                      class="h-20"
-                  /></a>
-                  <button
-                    id="mobile-menu-button"
-                    data-collapse-toggle="navigation-menu"
-                    type="button"
-                    class="flex items-center justify-center lg:hidden"
-                    aria-controls="navigation-menu"
-                    aria-expanded="false"
-                    aria-label="Navigation Menu"
-                  >
-                    <i
-                      class="fa-regular fa-bars"
-                      data-fontawesome-icon="fa-bars"
-                      data-landingsite-gallery-type="icon"
-                      aria-hidden="true"
-                    ></i>
-                  </button>
-                  <div
-                    id="navigation-menu"
-                    class="absolute left-0 top-full z-50 hidden w-full flex-1 bg-[#F5F8FF] pb-4 lg:static lg:mt-0 lg:flex lg:items-center lg:justify-between lg:bg-transparent lg:pb-0"
-                  >
-                    <ul
-                      class="flex flex-1 flex-col lg:flex-row lg:items-center lg:justify-center lg:space-x-6 lg:px-12"
-                    ></ul>
-                    <div
-                      class="mt-4 flex flex-col items-center space-y-4 lg:mt-0 lg:flex-row lg:space-x-4 lg:space-y-0"
-                    >
-                      <a
-                        href="https://wa.me/551152861876"
-                        class="flex h-11 items-center justify-center rounded-full bg-[var(--primary-color)] px-5 text-base font-medium leading-none text-[var(--light-text-color)] transition-all duration-500 ease-in-out hover:bg-[var(--primary-button-hover-bg-color)] lg:h-[52px] lg:px-[28px]"
-                        >Abrir no WhatsApp</a
-                      >
-                    </div>
-                  </div>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="text-4xl">🤖</span>
+                    <span class="text-2xl font-bold">DiDi</span>
                 </div>
-              </div>
-            </header>
-          </div>
-          <div>
-            <section
-              class="relative py-11 pb-8 md:pb-[100px] code-section"
-              id="sgao8ir"
-            >
-              <div
-                class="absolute bottom-1.5 right-0 sm:bottom-0 sm:top-0 lg:top-[-116px]"
-              >
-                <svg class="h-full w-full" viewBox="0 0 359 496">
-                  <use
-                    href="/embed/assets/10-hero-shape.svg#heroShape"
-                    style="--svg-color: var(--primary-color)"
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </div>
-              <div
-                class="relative z-20 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div
-                  class="grid grid-cols-1 gap-[70px] sm:gap-14 md:grid-cols-2 md:gap-6"
-                >
-                  <div
-                    class="flex flex-col justify-center text-center md:pt-8 md:text-left"
-                  >
-                    <h1
-                      class="w-full max-w-full text-balance text-[34px] font-bold leading-9 text-[var(--dark-text-color)] md:max-w-[534px] md:text-[40px] md:leading-[50px] lg:text-[44px] xl:text-[60px] xl:leading-[65px]"
-                    >
-                      Transforme sua experiência financeira com DinDin
-                    </h1>
-                    <p
-                      class="mb-6 mt-3.5 w-full max-w-full text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mb-8 md:mt-6 md:max-w-[470px] md:text-base md:leading-6 lg:text-lg lg:leading-[30px] xl:mb-12 xl:text-xl"
-                    >
-                      Receba análises detalhadas das suas faturas de cartão de
-                      crédito e gerencie documentos importantes com facilidade.
-                      Com lembretes personalizados, você nunca perderá uma data
-                      de pagamento ou uma oportunidade de economia. Nossa
-                      plataforma intuitiva garante que você tenha o suporte
-                      financeiro que precisa, onde e quando precisar.
-                    </p>
-                    <ul
-                      class="flex items-center justify-center md:justify-start"
-                    >
-                      <li>
-                        <a
-                          href="https://wa.me/551152861876"
-                          class="flex h-[52px] items-center justify-center rounded-full bg-[var(--primary-color)] px-6 text-sm font-medium leading-none text-[var(--light-text-color)] transition-all duration-500 ease-in-out hover:bg-[var(--primary-button-hover-bg-color)] md:h-11 md:text-base lg:h-[52px]"
-                          >Conecte-se conosco</a
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="">
-                    <img
-                      src="https://cdni.iconscout.com/illustration/premium/thumb/girls-are-chatting-on-whatsapp-10292164-8327240.png"
-                      alt=""
-                      class="h-full w-full object-contain"
-                      data-landingsite-gallery-type="illustration"
-                      data-seo-image=""
-                      data-media='{"id":"cc735020-8752-11ee-be47-0242ac140003","src":"iconscout","type":"illustration"}'
-                    />
-                  </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="hover:text-gray-200 transition">Funcionalidades</a>
+                    <a href="#how-it-works" class="hover:text-gray-200 transition">Como Funciona</a>
+                    <a href="#contact" class="hover:text-gray-200 transition">Contato</a>
                 </div>
-              </div>
-              <div
-                class="absolute bottom-[-120px] left-0 w-full sm:bottom-[-150px] lg:bottom-[-190px]"
-              >
-                <img
-                  src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/af70cc0e-ba9a-42d6-3844-ad1118a53600/publicContain"
-                  alt=""
-                  class="w-full"
-                  data-dont-replace=""
-                />
-              </div>
-            </section>
-            <section
-              class="relative pb-[50px] pt-[135px] md:pt-[160px] lg:pb-[100px] code-section"
-              id="s9qd9h"
-            >
-              <div class="absolute left-0 top-10 md:-top-20 lg:top-[-170px]">
-                <svg
-                  class="h-[162px] md:h-[300px] xl:h-[400px]"
-                  viewBox="0 0 135 463"
-                >
-                  <use
-                    href="/embed/assets/10-half-circles-shape-left.svg#halfCirclesShapeLeft"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="">
-                  <h4
-                    class="mx-auto w-full max-w-[500px] text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:text-[32px] md:leading-10 lg:max-w-[830px] lg:text-[52px] lg:leading-[62px]"
-                  >
-                    Transforme sua gestão financeira com DinDin
-                  </h4>
-                </div>
-                <div class="overflow-hidden">
-                  <div
-                    class="mt-[30px] flex transition-transform duration-500 ease-in-out md:mt-[60px] md:grid md:grid-cols-3 md:gap-2 lg:gap-8"
-                    data-landingsite-carousel=""
-                    style="transform: translateX(0px)"
-                  >
-                    <div
-                      class="relative flex w-full flex-shrink-0 flex-grow bg-[#FFFFFF] px-1"
-                      data-landingsite-carousel-item=""
-                    >
-                      <div class="w-full border border-solid border-[#E1E1E1]">
-                        <div class="flex items-center justify-center">
-                          <img
-                            src="https://cdni.iconscout.com/illustration/premium/thumb/girl-using-whatspp-9852058-8070836.png"
-                            alt=""
-                            class="h-[222px] w-full object-contain object-center"
-                            data-landingsite-gallery-type="illustration"
-                            data-media='{"id":"4dd9fce0-5d3b-11ee-ac82-0242ac140003","src":"iconscout","type":"illustration"}'
-                          />
-                        </div>
-                        <div
-                          class="px-[22px] py-8 md:p-4 lg:px-8 lg:pb-[34px] lg:pt-[30px]"
-                        >
-                          <h4
-                            class="mb-2 text-[22px] font-semibold leading-normal text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                          >
-                            Anexar documentos facilmente
-                          </h4>
-                          <p
-                            class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                          >
-                            Com DinDin, você não apenas anexa documentos; você
-                            otimiza sua experiência financeira. Agilize o
-                            processo e tenha tudo à mão.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="relative flex w-full flex-shrink-0 flex-grow bg-[#FFFFFF] px-1"
-                      data-landingsite-carousel-item=""
-                    >
-                      <div class="w-full border border-solid border-[#E1E1E1]">
-                        <div class="flex items-center justify-center">
-                          <img
-                            src="https://cdni.iconscout.com/illustration/premium/thumb/analyzing-credit-report-4487358-3722719.png"
-                            alt=""
-                            class="h-[222px] w-full object-contain object-center"
-                            data-landingsite-gallery-type="illustration"
-                            data-media='{"id":"529cb3a0-2c2b-11ec-b0f2-0242ac140003","src":"iconscout","type":"illustration"}'
-                          />
-                        </div>
-                        <div
-                          class="px-[22px] py-8 md:p-4 lg:px-8 lg:pb-[34px] lg:pt-[30px]"
-                        >
-                          <h4
-                            class="mb-2 text-[22px] font-semibold leading-normal text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                          >
-                            Análise de faturas simplificada
-                          </h4>
-                          <p
-                            class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                          >
-                            Receba uma visão clara das suas faturas de cartão de
-                            crédito, analisando seus gastos de forma rápida e
-                            eficaz. Faça escolhas informadas.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="relative flex w-full flex-shrink-0 flex-grow bg-[#FFFFFF] px-1"
-                      data-landingsite-carousel-item=""
-                    >
-                      <div class="w-full border border-solid border-[#E1E1E1]">
-                        <div class="flex items-center justify-center">
-                          <img
-                            src="https://cdni.iconscout.com/illustration/premium/thumb/businessman-looking-at-credit-report-checking-14554451-11691314.png"
-                            alt=""
-                            class="h-[222px] w-full object-contain object-center"
-                            data-auth-src="null"
-                            data-landingsite-gallery-type="illustration"
-                            data-media='{"id":"df41b8a0-190a-11f0-86e5-0242ac140003","src":"iconscout","type":"illustration"}'
-                          />
-                        </div>
-                        <div
-                          class="px-[22px] py-8 md:p-4 lg:px-8 lg:pb-[34px] lg:pt-[30px]"
-                        >
-                          <h4
-                            class="mb-2 text-[22px] font-semibold leading-normal text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                          >
-                            Lembretes personalizados
-                          </h4>
-                          <p
-                            class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                          >
-                            Nunca perca um pagamento importante novamente. Com
-                            lembretes adaptados às suas necessidades, você
-                            estará sempre no controle.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mt-8 block md:hidden">
-                  <ul
-                    class="flex items-center justify-center gap-3"
-                    data-landingsite-carousel-controls-index=""
-                  >
-                    <li
-                      class="h-5 w-5 rounded-full cursor-pointer transition-colors border border-[#C9CECD] bg-[var(--primary-color)]"
-                    ></li>
-                    <li
-                      class="h-5 w-5 rounded-full cursor-pointer transition-colors border border-[#C9CECD] bg-[#C9CECD]"
-                    ></li>
-                    <li
-                      class="h-5 w-5 rounded-full cursor-pointer transition-colors border border-[#C9CECD] bg-[#C9CECD]"
-                    ></li>
-                  </ul>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative mb-5 pt-8 md:pb-[50px] md:pt-[50px] lg:pb-[100px] code-section"
-              id="so0zztj"
-            >
-              <div
-                class="absolute right-0 top-[-100px] hidden lg:block lg:top-[-160px]"
-              >
-                <svg class="h-[300px] xl:h-[400px]" viewBox="0 0 135 463">
-                  <use
-                    href="/embed/assets/10-half-circles-shape-right.svg#halfCirclesShapeRight"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="flex flex-col-reverse gap-6 md:flex-row">
-                  <div class="mt-2.5 w-full md:mt-0 md:w-7/12">
-                    <img
-                      src="https://cdni.iconscout.com/illustration/premium/thumb/financial-assistant-robot-12646978-10299932.png"
-                      class="h-full w-full object-contain"
-                      alt=""
-                      data-landingsite-gallery-type="illustration"
-                      data-media='{"id":"eac98210-7974-11ef-b0bc-0242ac140003","src":"iconscout","type":"illustration"}'
-                    />
-                  </div>
-                  <div class="w-full md:w-5/12">
-                    <div
-                      class="mt-0 text-center md:mt-12 md:text-left lg:mt-[108px]"
-                    >
-                      <h2
-                        class="w-full max-w-full text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:max-w-[394px] md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                      >
-                        Simplifique suas finanças diárias com o DinDin
-                      </h2>
-                      <p
-                        class="mt-6 w-full max-w-full text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:max-w-[470px] md:text-base md:leading-[26px] lg:text-lg"
-                      >
-                        Envie documentos com facilidade e receba análises
-                        detalhadas sobre suas faturas de cartão de crédito, tudo
-                        diretamente no seu celular.
-                      </p>
-                      <p
-                        class="mb-7 mt-3 w-full max-w-full text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mt-6 md:max-w-[470px] md:text-base md:leading-[26px] lg:mb-12 lg:text-lg"
-                      >
-                        Com alertas personalizáveis, você estará sempre no
-                        controle de seus pagamentos, evitando multas e
-                        aproveitando oportunidades de economia.
-                      </p>
-                      <ul
-                        class="flex items-center justify-center md:justify-start"
-                      >
-                        <li>
-                          <a
-                            href="https://wa.me/551152861876"
-                            class="flex h-[52px] items-center justify-center rounded-full bg-[var(--primary-color)] px-8 text-sm font-medium leading-none text-[var(--light-text-color)] transition-all duration-500 ease-in-out hover:bg-[var(--primary-button-hover-bg-color)] md:h-11 md:text-base lg:h-[52px]"
-                            >Entre em Contato</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative pb-[50px] pt-[50px] xl:pb-[106px] code-section"
-              id="smrkdtg"
-            >
-              <span
-                class="absolute left-0 top-[140px] flex h-full w-full items-center"
-              >
-                <svg
-                  class="h-full w-full object-cover object-center md:h-auto"
-                  viewBox="0 0 1440 798"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <use
-                    href="/embed/assets/10-background-wave-shape.svg#backgroundWaveShape"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </span>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <h4
-                  class="mx-auto w-full max-w-[570px] text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                >
-                  Revolucione sua gestão financeira com DinDin
-                </h4>
-                <div
-                  class="mx-auto mt-9 grid w-full max-w-[976px] grid-cols-1 gap-5 md:mt-14 md:grid-cols-2 md:gap-10"
-                >
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Assistência financeira ágil
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Anexe documentos de forma prática e receba análises
-                        detalhadas das suas faturas de cartão de crédito através
-                        do WhatsApp.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Lembretes Personalizados
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Mantenha-se à frente dos vencimentos com lembretes que
-                        ajudam a evitar multas e juros desnecessários.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Suporte financeiro sempre à mão
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Acesse assistência financeira diretamente pelo seu
-                        celular, quando e onde precisar.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Maximize suas economias
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Descubra oportunidades de economia para garantir que
-                        suas finanças estejam sempre em ordem.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Explore funcionalidades simplificadas
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Uma plataforma intuitiva que oferece tudo que você
-                        precisa para gerenciar suas finanças com facilidade.
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    class="flex items-start gap-4 rounded-[20px] border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] p-8 shadow-[0_4_99px_0px_rgba(0,0,0,0.08)] md:p-6 lg:pb-9 lg:pl-8 lg:pr-12 lg:pt-8"
-                  >
-                    <span class="flex w-8 items-center justify-center"
-                      ><i
-                        class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                        aria-hidden="true"
-                      ></i
-                    ></span>
-                    <div class="w-full max-w-[340px] flex-1">
-                      <h4
-                        class="mb-4 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                      >
-                        Atingir suas metas financeiras
-                      </h4>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)]"
-                      >
-                        Com DinDin, você pode otimizar sua vida financeira e
-                        estar sempre em busca da sua estabilidade e sucesso
-                        financeiro.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative pb-0 pt-[26px] md:pt-[50px] xl:pt-[106px] code-section"
-              id="svtj69c"
-            >
-              <div
-                class="absolute bottom-[-120px] right-0 md:bottom-[-220px] xl:bottom-[-230px]"
-              >
-                <svg
-                  class="h-[162px] md:h-[300px] xl:h-[400px]"
-                  viewBox="0 0 135 463"
-                >
-                  <use
-                    href="/embed/assets/10-half-circles-shape-right.svg#halfCirclesShapeRight"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="flex flex-col gap-8 md:flex-row md:gap-6">
-                  <div class="w-full md:w-5/12">
-                    <div class="mt-0 md:mt-7 lg:mt-[68px]">
-                      <h2
-                        class="w-full max-w-full text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:max-w-[394px] md:text-left md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                      >
-                        Transforme sua abordagem financeira com DinDin
-                      </h2>
-                      <p
-                        class="mt-3.5 w-full max-w-full text-center text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mt-6 md:max-w-[470px] md:text-left md:text-base md:leading-[26px] lg:text-lg"
-                      >
-                        Anexe documentos facilmente e receba análises precisas
-                        das suas faturas de cartão de crédito, tudo na palma da
-                        sua mão. Com lembretes personalizados, você poderá
-                        organizar seus pagamentos e evitar surpresas
-                        financeiras. Nossa plataforma foi desenvolvida para
-                        oferecer suporte contínuo, permitindo que você faça
-                        escolhas financeiras informadas e eficientes.
-                      </p>
-                      <ul
-                        class="mt-4 border-t border-solid border-[var(--light-border-color)] pt-5 sm:pt-8 md:mt-5"
-                      >
-                        <li class="mb-[26px]">
-                          <div class="flex items-start gap-4">
-                            <span class="flex w-8 items-center justify-center"
-                              ><i
-                                class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                            <div class="w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                              >
-                                Estratégia Financeira Personalizada
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Otimize suas finanças com uma análise que se
-                                adapta às suas necessidades específicas,
-                                ajudando você a alcançar seus objetivos
-                                financeiros.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="mb-[26px]">
-                          <div class="flex items-start gap-4">
-                            <span class="flex w-8 items-center justify-center"
-                              ><i
-                                class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                            <div class="w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                              >
-                                Gerenciamento Simplificado
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Com DinDin, você pode acompanhar facilmente suas
-                                despesas, aproveitando um fluxo de informações
-                                em tempo real diretamente no WhatsApp.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-start gap-4">
-                            <span class="flex w-8 items-center justify-center"
-                              ><i
-                                class="fa-regular fa-square-check text-[28px] text-[var(--primary-color)]"
-                                aria-hidden="true"
-                              ></i
-                            ></span>
-                            <div class="w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)]"
-                              >
-                                Economia Inteligente
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Receba alertas sobre prazos e oportunidades de
-                                economia, mantendo-se sempre um passo à frente e
-                                evitando multas e juros desnecessários.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-7/12">
-                    <div class="flex items-start justify-end">
-                      <img
-                        src="https://cdni.iconscout.com/illustration/premium/thumb/personal-financial-assistant-8774622-7096645.png"
-                        class="h-full w-full object-contain"
-                        alt=""
-                        data-landingsite-gallery-type="illustration"
-                        data-media='{"id":"15bea540-f880-11ed-829f-0242ac140003","src":"iconscout","type":"illustration"}'
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative pb-[50px] lg:pb-[225px] code-section"
-              id="sg27x3f"
-            >
-              <div
-                class="-mb-20 -mt-[30px] w-full md:-mt-2.5 lg:-mt-20 lg:mb-[-140px]"
-              >
-                <img
-                  src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/ebf8473e-3c54-4ca0-410d-ec558c78f200/publicContain"
-                  alt=""
-                  class="w-full"
-                  data-dont-replace=""
-                />
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px] pt-24"
-              >
-                <div class="flex flex-col-reverse gap-8 md:flex-row md:gap-6">
-                  <div class="w-full md:w-7/12">
-                    <div class="flex items-start justify-end">
-                      <img
-                        src="https://cdni.iconscout.com/illustration/premium/thumb/businessman-measures-credit-score-14554447-11691310.png"
-                        alt=""
-                        class="h-full w-full object-contain lg:mr-6"
-                        data-landingsite-gallery-type="illustration"
-                        data-media='{"id":"df418680-190a-11f0-bb73-0242ac140003","src":"iconscout","type":"illustration"}'
-                      />
-                    </div>
-                  </div>
-                  <div class="w-full md:w-5/12">
-                    <div class="mt-2.5">
-                      <h2
-                        class="w-full max-w-full text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:max-w-[394px] md:text-left md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                      >
-                        Transforme sua vida financeira com DinDin
-                      </h2>
-                      <p
-                        class="mt-3.5 w-full max-w-full text-center text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mt-6 md:max-w-[470px] md:text-left md:text-base md:leading-[26px] lg:text-lg"
-                      >
-                        Aproveite a facilidade de anexar documentos e obter
-                        análises detalhadas das suas faturas de cartão de
-                        crédito, tudo na palma da sua mão. Com lembretes
-                        personalizados, você pode gerenciar seus pagamentos e
-                        evitar surpresas desagradáveis.
-                      </p>
-                      <ul
-                        class="mt-4 border-t border-solid border-[var(--light-border-color)] pt-5 md:mt-5 md:pt-8"
-                      >
-                        <li class="mb-3.5 lg:mb-[26px]">
-                          <div class="flex items-start gap-3 sm:gap-4">
-                            <span
-                              class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary-color)] text-[22px] font-semibold leading-none text-[var(--light-text-color)]"
-                              >1</span
-                            >
-                            <div class="mt-1.5 w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                              >
-                                Estratégia Financeira Personalizada
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Ajuste suas finanças de acordo com suas
-                                necessidades individuais, ajudando você a
-                                conquistar seus objetivos financeiros com
-                                eficiência.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="mb-3.5 lg:mb-[26px]">
-                          <div class="flex items-start gap-3 sm:gap-4">
-                            <span
-                              class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary-color)] text-[22px] font-semibold leading-none text-[var(--light-text-color)]"
-                              >2</span
-                            >
-                            <div class="mt-1.5 w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                              >
-                                Gerenciamento Simplificado
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Monitore suas despesas com facilidade,
-                                utilizando um fluxo de informações em tempo real
-                                diretamente pelo WhatsApp.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="flex items-start gap-3 sm:gap-4">
-                            <span
-                              class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--primary-color)] text-[22px] font-semibold leading-none text-[var(--light-text-color)]"
-                              >3</span
-                            >
-                            <div class="mt-1.5 w-full max-w-[340px] flex-1">
-                              <h4
-                                class="mb-3 text-[22px] font-semibold leading-none text-[var(--dark-text-color)] md:text-lg lg:text-[22px]"
-                              >
-                                Economia Inteligente
-                              </h4>
-                              <p
-                                class="text-sm font-normal leading-6 text-[var(--dark-text-color)] md:text-base"
-                              >
-                                Receba alertas sobre datas de vencimento e
-                                oportunidades de economia, mantendo-se sempre
-                                informado e evitando juros e multas
-                                desnecessárias.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative -mb-5 pb-0 pt-[74px] md:pt-[113px] code-section"
-              id="sazw37"
-            >
-              <div
-                class="absolute bottom-[-110px] right-0 z-50 md:bottom-[-270px]"
-              >
-                <svg
-                  class="h-[162px] md:h-[300px] xl:h-[400px]"
-                  viewBox="0 0 135 463"
-                >
-                  <use
-                    href="/embed/assets/10-half-circles-shape-right.svg#halfCirclesShapeRight"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                    data-dont-replace=""
-                  ></use>
-                </svg>
-              </div>
-              <div
-                class="absolute left-0 top-[-50px] w-full sm:top-[-110px] lg:top-[-290px]"
-              >
-                <img
-                  src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/6d4741aa-dbb2-4242-ee05-27a3519e2d00/publicContain"
-                  alt=""
-                  class="w-full"
-                  data-dont-replace=""
-                />
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div class="">
-                    <div class="">
-                      <h4
-                        class="text-[26px] font-[var(--font-family-heading)] font-bold leading-none text-[var(--dark-text-color)] lg:text-4xl xl:text-[42px]"
-                      >
-                        Transforme sua rotina financeira com DinDin
-                      </h4>
-                      <span
-                        class="relative mb-14 mt-4 block text-[28px] font-[var(--font-family-heading)] font-light italic leading-none text-[var(--gray-text-color)] md:mb-10 md:text-[30px] lg:mb-[68px] lg:text-[38px]"
-                      >
-                        Conecte-se hoje mesmo com nossas soluções financeiras
-                        personalizadas.
-                        <span
-                          class="absolute bottom-0 left-[-31px] z-[-1] flex items-center"
-                          ><img
-                            src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/5d061ea5-a8e4-4a30-9af3-5aafc7fa7c00/publicContain"
-                            alt=""
-                            class="h-[22px] md:h-auto"
-                            data-dont-replace=""
-                        /></span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="" data-landingsite-faq="">
-                    <div class="lg:pl-8">
-                      <div
-                        class="w-full border-b border-solid border-[rgba(83,83,83,0.3)] p-0 py-6 text-base font-normal leading-none text-[rgba(83,83,83,0.3)] shadow-none md:py-[33px]"
-                        data-landingsite-faq-item=""
-                      >
-                        <button
-                          class="flex w-full items-center justify-between text-left text-base font-bold leading-none text-[var(--dark-text-color)] lg:text-xl xl:text-2xl"
-                          data-landingsite-faq-question=""
-                        >
-                          <span
-                            >Como a DinDin pode ajudar nas minhas
-                            finanças?</span
-                          >
-                          <span class="flex w-6 items-center">
-                            <i
-                              class="fa-solid fa-angle-down text-lg text-[var(--dark-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                        </button>
-                        <div class="mt-5 hidden" data-landingsite-faq-answer="">
-                          <p
-                            class="text-left text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:leading-[30px]"
-                          >
-                            A DinDin oferece um apoio financeiro personalizado
-                            por meio do WhatsApp. Envie seus documentos para
-                            receber análises imediatas das suas finanças.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="w-full border-b border-solid border-[rgba(83,83,83,0.3)] p-0 py-6 text-base font-normal leading-none text-[rgba(83,83,83,0.3)] shadow-none md:py-[33px]"
-                        data-landingsite-faq-item=""
-                      >
-                        <button
-                          class="flex w-full items-center justify-between text-left text-base font-bold leading-none text-[var(--dark-text-color)] lg:text-xl xl:text-2xl"
-                          data-landingsite-faq-question=""
-                        >
-                          <span>Quais tipos de serviços a DinDin oferece?</span>
-                          <span class="flex w-6 items-center">
-                            <i
-                              class="fa-solid fa-angle-down text-lg text-[var(--dark-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                        </button>
-                        <div class="mt-5 hidden" data-landingsite-faq-answer="">
-                          <p
-                            class="text-left text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:leading-[30px]"
-                          >
-                            Os serviços incluem anexo de documentos, análise de
-                            faturas de cartão de crédito, lembretes de pagamento
-                            e muito mais.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="w-full border-b border-solid border-[rgba(83,83,83,0.3)] p-0 py-6 text-base font-normal leading-none text-[rgba(83,83,83,0.3)] shadow-none md:py-[33px]"
-                        data-landingsite-faq-item=""
-                      >
-                        <button
-                          class="flex w-full items-center justify-between text-left text-base font-bold leading-none text-[var(--dark-text-color)] lg:text-xl xl:text-2xl"
-                          data-landingsite-faq-question=""
-                        >
-                          <span
-                            >Como a DinDin se destaca dos concorrentes?</span
-                          >
-                          <span class="flex w-6 items-center">
-                            <i
-                              class="fa-solid fa-angle-down text-lg text-[var(--dark-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                        </button>
-                        <div class="mt-5 hidden" data-landingsite-faq-answer="">
-                          <p
-                            class="text-left text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:leading-[30px]"
-                          >
-                            Nosso foco exclusivo na plataforma WhatsApp nos
-                            permite fornecer um serviço acessível e conveniente
-                            para nossa clientela.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="w-full border-b border-solid border-[rgba(83,83,83,0.3)] p-0 py-6 text-base font-normal leading-none text-[rgba(83,83,83,0.3)] shadow-none md:py-[33px]"
-                        data-landingsite-faq-item=""
-                      >
-                        <button
-                          class="flex w-full items-center justify-between text-left text-base font-bold leading-none text-[var(--dark-text-color)] lg:text-xl xl:text-2xl"
-                          data-landingsite-faq-question=""
-                        >
-                          <span
-                            >Como garantir que não perco prazos
-                            importantes?</span
-                          >
-                          <span class="flex w-6 items-center">
-                            <i
-                              class="fa-solid fa-angle-down text-lg text-[var(--dark-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                        </button>
-                        <div class="mt-5 hidden" data-landingsite-faq-answer="">
-                          <p
-                            class="text-left text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:leading-[30px]"
-                          >
-                            Com nosso sistema de lembretes personalizados, você
-                            nunca mais perderá prazos importantes e sempre
-                            estará à frente nas suas obrigações financeiras.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="w-full p-0 py-6 text-base font-normal leading-none text-[rgba(83,83,83,0.3)] shadow-none md:py-[33px]"
-                        data-landingsite-faq-item=""
-                      >
-                        <button
-                          class="flex w-full items-center justify-between text-left text-base font-bold leading-none text-[var(--dark-text-color)] lg:text-xl xl:text-2xl"
-                          data-landingsite-faq-question=""
-                        >
-                          <span>Como posso começar a usar a DinDin?</span>
-                          <span class="flex w-6 items-center">
-                            <i
-                              class="fa-solid fa-angle-down text-lg text-[var(--dark-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                        </button>
-                        <div class="mt-5 hidden" data-landingsite-faq-answer="">
-                          <p
-                            class="text-left text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:leading-[30px]"
-                          >
-                            Acesse nossa página de
-                            <a href="https://wa.me/551152861876">Contato</a> e
-                            preencha o formulário ou envie uma mensagem pelo
-                            WhatsApp para começar!
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative overflow-hidden pb-[50px] pt-[170px] lg:pb-[152px] lg:pt-[214px] code-section"
-              id="swgh6m7"
-            >
-              <div
-                class="absolute left-0 top-0 h-full w-full bg-[var(--light-background-color)]"
-                style="clip-path: polygon(0% 23%, 100% 0%, 100% 100%, 0% 100%)"
-              ></div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="mb-[50px]">
-                  <h4
-                    class="mx-auto mb-4 w-full max-w-[570px] text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:mb-5 md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                  >
-                    Transforme suas finanças com o DinDin
-                  </h4>
-                  <p
-                    class="mx-auto mb-5 w-full max-w-[550px] text-center text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:text-base md:leading-6 lg:max-w-[690px] lg:text-xl lg:leading-[30px]"
-                  >
-                    Com o DinDin, você pode otimizar sua experiência financeira
-                    diretamente pelo WhatsApp. Envie documentos com facilidade e
-                    receba análises detalhadas das suas faturas de cartão de
-                    crédito, tudo ao seu alcance. Com lembretes personalizados,
-                    você terá controle total sobre suas finanças e evitará
-                    surpresas desagradáveis.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="marquee relative left-1/2 mb-5 -translate-x-1/2 overflow-x-scroll lg:mb-10 2xl:overflow-x-auto"
-              >
-                <div
-                  class="mx-auto flex w-[1310px] items-center justify-center gap-0 sm:w-[1460px] sm:gap-8"
-                >
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2188060418/photo/young-businessman-smiling-at-camera.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=_gEBHvNUfO_4Zm3fwhw7Ph6bOVFWjf9OHIJ6s1If9t4="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2188060418","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Assistência Instantânea
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Suporte imediato para suas necessidades financeiras.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2156062809/photo/headshot-closeup-portrait-middle-eastern-israel-businesswoman-business-lady-standing-isolated.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=mPEqaET5s98W_40DmBTRbYY5z0F-_1YkqdC4TCHJeig="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2156062809","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Gerenciamento de Documentos
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Organize seus documentos com facilidade.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/1408899475/photo/portrait-of-a-happy-businesswoman-smiling-at-the-camera.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=w7PTngo2hs688Xrsn7AorGtygCJhPj41ZbMlf2rE1Ps="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"1408899475","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Alertas Personalizados
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Mantenha-se informado sobre seus vencimentos.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2172939929/photo/business-portrait-and-smile-with-black-woman-in-office-for-start-of-corporate-or-professional.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=NseBcWqJuFgv6LUD3dKTLO7qA5mMlorqQzk8RItLYn8="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2172939929","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Experiência Eficiente
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Simplicidade e eficiência na gestão financeira.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2191160500/photo/close-up-photo-of-happy-senior-man-indoor.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=OhQul4AM1ilDUsIXrbc2NB2Uk2JOdX3UkRO2n-bnTE4="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2191160500","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Otimização Financeira
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Tome decisões informadas com análises detalhadas.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2165346620/photo/real-people.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=g0aA-YxhdwBkQSZ92F6rAOWEa1_Q2WcUAKp2yE1ZlWc="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2165346620","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Conveniência Financeira
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Facilidade em manejar suas finanças pelo WhatsApp.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/1763926700/photo/portrait-of-smiling-smart-school-boy-wearing-braces-on-teeth-looking-at-camera-education.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=YKRLHwsAxTRCXMS4m6l37LCASxh83Fj9ZesWnICPYtY="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"1763926700","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Seu Assistente Financeiro
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Apoio em todos os aspectos da sua vida financeira.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="relative left-1/2 -translate-x-1/2 overflow-x-scroll 2xl:overflow-x-auto"
-              >
-                <div
-                  class="mx-auto flex w-[1310px] items-center justify-center gap-0 sm:w-[1460px] sm:gap-8"
-                >
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2070897862/photo/cheerful-young-woman-smiling-positive-and-joyful-happy-curly-haired-student-laughing-looking.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=DRbQHQxRmFpSO_fsz9-3FMWkawbZK3tamv5Suv2Fd6U="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2070897862","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Descomplicação Financeira
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Ajuda nas suas finanças de forma simplificada.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2149782936/photo/portrait-of-laughing-and-smiling-mature-man-standing-outdoors-in-countryside.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=cjfRNtli1JWLdXizZgQn0T4LWKRuyf2Ft9XjVPr9-yk="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2149782936","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Transformação Financeira
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Mude sua abordagem em relação ao dinheiro.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/1949501832/photo/handsome-hispanic-senior-business-man-with-crossed-arms-smiling-at-camera-indian-or-latin.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=hPNBMIFPjVlKKmeeu4tkH2mwJ-3mLFlU4qYGK0r4_2Q="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"1949501832","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Simplicidade na Gestão
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Simplifique sua relação com as finanças.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2091759779/photo/portrait-of-mature-blonde-female-doctor-with-stethoscope-studio-shot.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=KHUCb12omAU7PSmn9aq2TJ_Ge-5W0T1Q4WvGmQTlEHM="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2091759779","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Conexões Financeiras
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Conecte-se às informações que lhe importam.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/1450340623/photo/portrait-of-successful-mature-boss-senior-businessman-in-glasses-asian-looking-at-camera-and.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=_3BHqzEwN7yDJ5o41g1ofHVbEp1NYbcqisUY_Sd1eyA="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"1450340623","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Planejamento Financeiro
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Estratégias para alcançar seus objetivos financeiros.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                      src="https://media.gettyimages.com/id/2174363314/photo/businessman-looking-at-camera.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=CwuMLZzKlTrquALIPsPzPEFVuadCuDb6jPVQFs9XcCk="
-                      alt=""
-                      class="h-20 w-20 rounded-full object-cover object-center"
-                      data-landingsite-gallery-type="image"
-                      data-testimonial-image=""
-                      data-dont-change=""
-                      data-media='{"id":"2174363314","src":"iStock","type":"image"}'
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Diálogo Financeiro
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Converse sobre as suas finanças a cada passo.
-                    </p>
-                  </div>
-                  <div
-                    class="flex w-full max-w-[237px] flex-col items-center justify-start pb-6 pt-[20px]"
-                  >
-                    <img
-                    src="https://media.gettyimages.com/id/2164732056/photo/happy-city-and-portrait-of-business-black-man-on-morning-commute-travel-and-journey-to-office.jpg?b=1&amp;amp;s=612x612&amp;amp;w=0&amp;amp;k=20&amp;amp;c=d5dd_QaswHUa7EOHPvYv9dawhbabkYkl9lghZPw3XDU="
-                    alt="" class="h-20 w-20 rounded-full object-cover
-                    object-center" data-landingsite-gallery-type="image"
-                    data-testimonial-image="" data-dont-change=""
-                    data-media="{"id":"2164732056","src":"iStock","type":"image"}"
-                    />
-                    <h4
-                      class="mb-2 mt-[26px] text-center text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                    >
-                      Autonomia Nas Finanças
-                    </h4>
-                    <p
-                      class="min-h-[40px] text-center text-base font-normal leading-none text-[var(--dark-text-color)]"
-                    >
-                      Sinta-se no controle das suas escolhas financeiras.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section class="relative pb-5 pt-[90px] code-section" id="s1cnee">
-              <span class="absolute left-0 top-0 block">
-                <svg
-                  class="h-[152px] sm:h-[225px] md:h-[240px] lg:h-auto"
-                  viewBox="0 0 516 344"
-                  width="516"
-                  height="344"
-                >
-                  <use
-                    href="/embed/assets/10-top-left-corner-shape.svg#topLeftCornerShape"
-                    style="
-                      --svg-color: var(--primary-color);
-                      --svg-color2: var(--accent-color);
-                    "
-                    data-landingsite-gallery-type="illustration"
-                  ></use>
-                </svg>
-              </span>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="mb-11 md:mb-[67px]">
-                  <h4
-                    class="mb-2 text-center text-[28px] font-bold leading-9 text-[#2A2A2A] md:mb-3.5 md:text-[40px] md:leading-[44px] lg:mb-6 lg:text-[52px] lg:leading-[62px]"
-                  >
-                    Transforme suas finanças de forma prática
-                  </h4>
-                  <p
-                    class="w-full text-center text-sm font-normal leading-[22px] text-[#2A2A2A] md:text-base md:leading-6 lg:text-xl lg:leading-[26px]"
-                  >
-                    O DinDin otimiza seu gerenciamento financeiro no WhatsApp,
-                    facilitando a análise e organização das suas finanças.
-                  </p>
-                </div>
-                <div
-                  class="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-3.5 lg:gap-11"
-                >
-                  <div
-                    class="bg-[var(--primary-color)] px-6 pb-10 pt-8 md:p-5 lg:px-[34px] lg:py-[39px]"
-                  >
-                    <div
-                      class="border-b border-solid pb-8 text-[var(--primary-button-text-color)]"
-                    >
-                      <span
-                        class="block text-lg font-semibold leading-none text-[var(--primary-button-text-color)]"
-                        >Atendimento Personalizado</span
-                      >
-                      <h3
-                        class="mb-[18px] mt-[22px] flex items-end gap-2 text-[64px] font-bold leading-none text-[var(--primary-button-text-color)] md:text-5xl lg:text-[64px]"
-                      >
-                        R$29
-                        <span
-                          class="mb-2 block text-base font-normal leading-none"
-                          >/ mês</span
-                        >
-                      </h3>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--primary-button-text-color)] md:text-sm lg:text-base"
-                      >
-                        Receba análises financeiras adaptadas às suas
-                        necessidades.
-                      </p>
-                    </div>
-                    <div class="pt-8">
-                      <ul class="pb-[38px]">
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-button-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--primary-button-text-color)]"
-                          >
-                            Análise de Faturas de Cartão
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-button-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--primary-button-text-color)]"
-                          >
-                            Documentos Organizados
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-button-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--primary-button-text-color)]"
-                          >
-                            Gerenciamento de Pagamentos
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-button-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--primary-button-text-color)]"
-                          >
-                            Suporte 24/7
-                          </p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-button-text-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--primary-button-text-color)]"
-                          >
-                            Lembretes Personalizáveis
-                          </p>
-                        </li>
-                      </ul>
-                      <a
-                        href="#"
-                        class="mx-auto flex h-[55px] w-full max-w-[292px] items-center justify-center rounded-[27.5px] bg-[var(--primary-button-text-color)] bg-white text-lg font-semibold leading-none text-[var(--primary-color)] md:mx-0 md:text-sm lg:text-lg"
-                        >Inicie um Teste Gratuito</a
-                      >
-                    </div>
-                  </div>
-                  <div
-                    class="border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] px-6 pb-10 pt-8 md:p-5 lg:px-[34px] lg:py-[39px]"
-                  >
-                    <div
-                      class="border-b border-solid border-[var(--dark-border-color)] pb-8"
-                    >
-                      <span
-                        class="block text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                        >Gerenciamento Eficiente</span
-                      >
-                      <h3
-                        class="mb-[18px] mt-[22px] flex items-end gap-2 text-[64px] font-bold leading-none text-[var(--dark-text-color)] md:text-5xl lg:text-[64px]"
-                      >
-                        R$59
-                        <span
-                          class="mb-2 block text-base font-normal leading-none"
-                          >/ mês</span
-                        >
-                      </h3>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)] md:text-sm lg:text-base"
-                      >
-                        Organize seus documentos com eficiência pelo WhatsApp.
-                      </p>
-                    </div>
-                    <div class="pt-8">
-                      <ul class="pb-[38px]">
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Acesso Completo aos Recursos
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Alertas Inteligentes
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            300 GB de Armazenamento
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Suporte Prioritário
-                          </p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Sistema de Lembranças
-                          </p>
-                        </li>
-                      </ul>
-                      <a
-                        href="#"
-                        class="mx-auto flex h-[55px] w-full max-w-[292px] items-center justify-center rounded-[27.5px] border border-solid border-[var(--dark-border-color)] bg-white text-lg font-semibold leading-none text-[var(--dark-text-color)] md:mx-0 md:text-sm lg:text-lg"
-                        >Inicie um Teste Gratuito</a
-                      >
-                    </div>
-                  </div>
-                  <div
-                    class="border border-solid border-[var(--dark-border-color)] bg-[#FFFFFF] px-6 pb-10 pt-8 md:p-5 lg:px-[34px] lg:py-[39px]"
-                  >
-                    <div
-                      class="border-b border-solid border-[var(--dark-border-color)] pb-8"
-                    >
-                      <span
-                        class="block text-lg font-semibold leading-none text-[var(--dark-text-color)]"
-                        >Solução Completa</span
-                      >
-                      <h3
-                        class="mb-[18px] mt-[22px] flex items-end gap-2 text-[64px] font-bold leading-none text-[var(--dark-text-color)] md:text-5xl lg:text-[64px]"
-                      >
-                        R$149<span
-                          class="mb-2 block text-base font-normal leading-none"
-                          >/ mês</span
-                        >
-                      </h3>
-                      <p
-                        class="text-base font-normal leading-6 text-[var(--dark-text-color)] md:text-sm lg:text-base"
-                      >
-                        Ferramentas completas para soluções financeiras de
-                        grande escala.
-                      </p>
-                    </div>
-                    <div class="pt-8">
-                      <ul class="pb-[38px]">
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Gerenciamento Total de Documentos
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Análises e Relatórios Avançados
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            500 GB de Armazenamento
-                          </p>
-                        </li>
-                        <li class="mb-6 flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Agentes Ilimitados
-                          </p>
-                        </li>
-                        <li class="flex items-center gap-2">
-                          <span class="flex w-6 items-center justify-center">
-                            <i
-                              class="fa-solid fa-circle-check text-xl text-[var(--primary-color)]"
-                              aria-hidden="true"
-                            ></i>
-                          </span>
-                          <p
-                            class="text-base font-normal leading-none text-[var(--dark-text-color)]"
-                          >
-                            Suporte Dedicado
-                          </p>
-                        </li>
-                      </ul>
-                      <a
-                        href="#"
-                        class="mx-auto flex h-[55px] w-full max-w-[292px] items-center justify-center rounded-[27.5px] border border-solid border-[var(--dark-border-color)] bg-white text-lg font-semibold leading-none text-[var(--dark-text-color)] md:mx-0 md:text-sm lg:text-lg"
-                        >Inicie um Teste Gratuito</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section
-              class="relative pb-12 pt-[250px] md:pb-[100px] code-section"
-              id="s3tqhbo"
-            >
-              <div class="absolute top-[-120px] w-full">
-                <img
-                  src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/6d4741aa-dbb2-4242-ee05-27a3519e2d00/publicContain"
-                  alt=""
-                  class="w-full"
-                  data-dont-replace=""
-                />
-              </div>
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div class="flex flex-col gap-8 md:flex-row md:gap-6">
-                  <div class="w-full md:w-5/12">
-                    <div class="md:mt-[108px]">
-                      <h2
-                        class="w-full max-w-full text-center text-[28px] font-bold leading-9 text-[var(--dark-text-color)] md:max-w-[394px] md:text-left md:text-[40px] md:leading-[44px] lg:text-[52px] lg:leading-[62px]"
-                      >
-                        Transforme sua gestão financeira com DinDin
-                      </h2>
-                      <p
-                        class="mt-3.5 w-full max-w-full text-center text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mt-6 md:max-w-[470px] md:text-left md:text-base md:leading-[26px] lg:text-lg"
-                      >
-                        Oferecemos uma solução prática para que você possa
-                        anexar documentos, revisar suas faturas de cartão de
-                        crédito e receber lembretes personalizados, tudo ao seu
-                        alcance.
-                      </p>
-                      <p
-                        class="mb-6 mt-3.5 w-full max-w-full text-center text-sm font-normal leading-[22px] text-[var(--dark-text-color)] md:mb-12 md:mt-6 md:max-w-[470px] md:text-left md:text-base md:leading-[26px] lg:text-lg"
-                      >
-                        Com a DinDin, a análise das suas finanças se torna
-                        simples e eficiente, permitindo que você tome decisões
-                        informadas e evite surpresas desagradáveis.
-                      </p>
-                      <ul
-                        class="flex items-center justify-center md:justify-start"
-                      >
-                        <li>
-                          <a
-                            href="https://wa.me/551152861876"
-                            class="flex h-[52px] w-[170px] items-center justify-center rounded-full bg-[var(--primary-color)] text-sm font-medium leading-none text-[var(--primary-button-text-color)] transition-all duration-500 ease-in-out hover:bg-[var(--primary-button-hover-bg-color)] md:h-11 md:w-[155px] md:text-base lg:h-[52px] lg:w-[170px]"
-                            >Entre em contato</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="w-full md:w-7/12">
-                    <img
-                      src="https://cdni.iconscout.com/illustration/premium/thumb/boy-and-girl-talking-online-10292194-8327270.png"
-                      alt=""
-                      class="ml-0 h-full w-full object-contain xl:ml-10"
-                      data-landingsite-gallery-type="illustration"
-                      data-media='{"id":"cc746830-8752-11ee-900d-0242ac140003","src":"iconscout","type":"illustration"}'
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-          <div>
-            <footer
-              class="relative rounded-t-[60px] bg-[#F6F9FF] pb-9 pt-[40px] code-section"
-              id="sqohvu"
-            >
-              <div
-                class="relative z-50 mx-auto w-full max-w-[1206px] px-[18px]"
-              >
-                <div
-                  class="border-t border-solid border-[#12141D]/[0.15] pt-[30px]"
-                >
-                  <p
-                    class="text-center text-sm font-normal leading-normal text-[var(--dark-text-color)]"
-                  >
-                    © 2025 DinDin Todos os Direitos Reservados
-                  </p>
-                </div>
-              </div>
-            </footer>
-          </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="container mx-auto px-6 py-20 md:py-32 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Seu Assistente Pessoal<br>
+                <span class="text-indigo-200">Sempre à Disposição</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-indigo-100 max-w-3xl mx-auto">
+                DiDi é um assistente pessoal baseado em IA que gerencia sua vida digital via WhatsApp.
+                Emails, calendário, lembretes, notas e muito mais — tudo em um só lugar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#features" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                    Conheça as Funcionalidades
+                </a>
+                <a href="https://github.com/djalmaaraujo/didi" target="_blank" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-900 transition shadow-lg">
+                    Ver no GitHub
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </body>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">✨ Funcionalidades</h2>
+                <p class="text-xl text-gray-600">Tudo que você precisa para organizar sua vida digital</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="feature-card bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📧</div>
+                    <h3 class="text-2xl font-bold mb-3">Emails</h3>
+                    <p class="text-gray-700">Leia, busque, envie e gerencie emails direto pelo WhatsApp. Integração total com Mail.app.</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="feature-card bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📅</div>
+                    <h3 class="text-2xl font-bold mb-3">Calendário</h3>
+                    <p class="text-gray-700">Crie eventos, consulte agenda e receba alertas automáticos de reuniões.</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="feature-card bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">⏰</div>
+                    <h3 class="text-2xl font-bold mb-3">Lembretes</h3>
+                    <p class="text-gray-700">Nunca mais esqueça compromissos. Crie lembretes com horário personalizado.</p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="feature-card bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📝</div>
+                    <h3 class="text-2xl font-bold mb-3">Notas</h3>
+                    <p class="text-gray-700">Gerencie anotações de qualquer lugar. Busque, crie e edite notas facilmente.</p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="feature-card bg-gradient-to-br from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">🧠</div>
+                    <h3 class="text-2xl font-bold mb-3">Memória</h3>
+                    <p class="text-gray-700">O DiDi guarda informações importantes sobre você de forma organizada e versionada.</p>
+                </div>
+
+                <!-- Feature Card 6 -->
+                <div class="feature-card bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📄</div>
+                    <h3 class="text-2xl font-bold mb-3">Invoices</h3>
+                    <p class="text-gray-700">Gere faturas profissionais bilíngues (PT/EN) com um único comando.</p>
+                </div>
+
+                <!-- Feature Card 7 -->
+                <div class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">🎙️</div>
+                    <h3 class="text-2xl font-bold mb-3">Reuniões</h3>
+                    <p class="text-gray-700">Gravação e transcrição automática de meetings com análise via IA.</p>
+                </div>
+
+                <!-- Feature Card 8 -->
+                <div class="feature-card bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-3">Resumo Diário</h3>
+                    <p class="text-gray-700">Receba um resumo matinal com emails não lidos, eventos do dia e lembretes.</p>
+                </div>
+
+                <!-- Feature Card 9 -->
+                <div class="feature-card bg-gradient-to-br from-teal-50 to-green-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="text-2xl font-bold mb-3">WhatsApp</h3>
+                    <p class="text-gray-700">Acesso completo via mensagens de texto. Envie imagens, áudios, documentos e mais.</p>
+                </div>
+
+                <!-- Feature Card 10 -->
+                <div class="feature-card bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">🔍</div>
+                    <h3 class="text-2xl font-bold mb-3">Busca na Web</h3>
+                    <p class="text-gray-700">Pesquise informações atualizadas em tempo real e receba respostas completas.</p>
+                </div>
+
+                <!-- Feature Card 11 -->
+                <div class="feature-card bg-gradient-to-br from-violet-50 to-purple-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">🎤</div>
+                    <h3 class="text-2xl font-bold mb-3">Text-to-Speech</h3>
+                    <p class="text-gray-700">Converta textos em áudio com voz clonada em português brasileiro.</p>
+                </div>
+
+                <!-- Feature Card 12 -->
+                <div class="feature-card bg-gradient-to-br from-slate-50 to-gray-50 p-8 rounded-xl shadow-md">
+                    <div class="text-5xl mb-4">📇</div>
+                    <h3 class="text-2xl font-bold mb-3">Contatos</h3>
+                    <p class="text-gray-700">Acesse e compartilhe informações de contatos com busca inteligente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">🚀 Como Funciona?</h2>
+                <p class="text-xl text-gray-600">Tecnologia moderna para facilitar sua vida</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4">🤖 Arquitetura</h3>
+                    <p class="text-gray-700 mb-4">
+                        DiDi é um servidor Python baseado no <strong>Claude Agent SDK da Anthropic</strong>,
+                        rodando 24/7 e acessível remotamente via WhatsApp através de webhooks.
+                    </p>
+                    <p class="text-gray-700">
+                        Ele se integra nativamente com suas ferramentas do macOS (Mail.app, Calendar.app,
+                        Reminders.app, Notes.app, Contacts.app) e oferece automações personalizadas.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                    <h3 class="text-2xl font-bold mb-4">🔧 Tecnologias</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✓</span>
+                            <span class="text-gray-700"><strong>Python + FastAPI</strong> - Backend moderno e performático</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✓</span>
+                            <span class="text-gray-700"><strong>Claude Agent SDK</strong> - IA avançada da Anthropic</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✓</span>
+                            <span class="text-gray-700"><strong>AppleScript</strong> - Integração nativa com macOS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✓</span>
+                            <span class="text-gray-700"><strong>WhatsApp Business API</strong> - Comunicação via mensagens</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-3">✓</span>
+                            <span class="text-gray-700"><strong>F5-TTS</strong> - Síntese de voz em português brasileiro</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-4">🌟 Open Source</h3>
+                    <p class="text-gray-700 mb-4">
+                        Todo o código está disponível no GitHub sob licença open source.
+                        Você pode usar, modificar e contribuir com o projeto.
+                    </p>
+                    <a href="https://github.com/djalmaaraujo/didi" target="_blank"
+                       class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                        Ver repositório no GitHub →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold mb-6">💬 Interessado?</h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Quer saber mais sobre o DiDi ou tem interesse em implementar seu próprio assistente pessoal?
+                    Entre em contato!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="mailto:weare@nossomos.cc"
+                       class="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition shadow-lg">
+                        📧 Email: weare@nossomos.cc
+                    </a>
+                    <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi"
+                       target="_blank"
+                       class="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg">
+                        📱 WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-3xl">🤖</span>
+                        <span class="text-xl font-bold">DiDi</span>
+                    </div>
+                    <p class="text-indigo-200">Seu assistente pessoal inteligente</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 text-center md:text-left">
+                    <div>
+                        <p class="mb-2">Desenvolvido por</p>
+                        <a href="https://nossomos.cc" target="_blank" class="font-semibold hover:text-indigo-200 transition">
+                            Code Consultants
+                        </a>
+                    </div>
+                    <div>
+                        <p class="mb-2">Open Source</p>
+                        <a href="https://github.com/djalmaaraujo/didi" target="_blank" class="font-semibold hover:text-indigo-200 transition">
+                            GitHub
+                        </a>
+                    </div>
+                    <div>
+                        <p class="mb-2">Termos</p>
+                        <a href="terms-and-usage.html" class="font-semibold hover:text-indigo-200 transition">
+                            Termos de Uso
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-indigo-400 mt-8 pt-8 text-center text-indigo-200">
+                <p>&copy; 2024-2026 DiDi. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>
