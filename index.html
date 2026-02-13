@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,294 +8,633 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                    }
-                }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Nav */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        nav {
+            padding: 16px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e5e7eb;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
             }
         }
-    </script>
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 24px;
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-        }
+
         .didi-avatar {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             border: 4px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 32px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #c7d2fe;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #c7d2fe;
+            max-width: 768px;
+            margin: 0 auto 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 64px;
+            }
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #6366f1;
+        }
+
+        .btn-primary:hover {
+            background: #f3f4f6;
+        }
+
+        .btn-secondary {
+            background: #4338ca;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #3730a3;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .feature-card {
+            background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #374151;
+        }
+
+        /* Color variations for cards */
+        .feature-card:nth-child(1) { background: linear-gradient(to bottom right, #dbeafe, #bfdbfe); }
+        .feature-card:nth-child(2) { background: linear-gradient(to bottom right, #fae8ff, #f5d0fe); }
+        .feature-card:nth-child(3) { background: linear-gradient(to bottom right, #dcfce7, #bbf7d0); }
+        .feature-card:nth-child(4) { background: linear-gradient(to bottom right, #fef3c7, #fde68a); }
+        .feature-card:nth-child(5) { background: linear-gradient(to bottom right, #fee2e2, #fecaca); }
+        .feature-card:nth-child(6) { background: linear-gradient(to bottom right, #cffafe, #a5f3fc); }
+        .feature-card:nth-child(7) { background: linear-gradient(to bottom right, #e0e7ff, #c7d2fe); }
+        .feature-card:nth-child(8) { background: linear-gradient(to bottom right, #fce7f3, #fbcfe8); }
+        .feature-card:nth-child(9) { background: linear-gradient(to bottom right, #ccfbf1, #99f6e4); }
+        .feature-card:nth-child(10) { background: linear-gradient(to bottom right, #fed7aa, #fdba74); }
+        .feature-card:nth-child(11) { background: linear-gradient(to bottom right, #ede9fe, #ddd6fe); }
+        .feature-card:nth-child(12) { background: linear-gradient(to bottom right, #f1f5f9, #e2e8f0); }
+
+        /* How It Works */
+        .how-it-works {
+            background: #f3f4f6;
+        }
+
+        .content-box {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 32px;
+            max-width: 896px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-box h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .content-box p {
+            color: #374151;
+            margin-bottom: 16px;
+        }
+
+        .content-box ul {
+            list-style: none;
+        }
+
+        .content-box li {
+            display: flex;
+            align-items: flex-start;
+            color: #374151;
+            margin-bottom: 12px;
+        }
+
+        .content-box li span:first-child {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .content-box a {
+            color: #6366f1;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .content-box a:hover {
+            color: #4338ca;
+        }
+
+        /* Contact */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .contact-section p {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            max-width: 672px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn-contact-email {
+            background: #6366f1;
+            color: white;
+        }
+
+        .btn-contact-email:hover {
+            background: #4f46e5;
+        }
+
+        .btn-contact-whatsapp {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-contact-whatsapp:hover {
+            background: #15803d;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            color: #c7d2fe;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #c7d2fe;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 32px;
+            text-align: center;
+            color: #c7d2fe;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased">
-
+<body>
     <!-- Header -->
-    <header class="gradient-bg text-white">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="text-4xl">🤖</span>
-                    <span class="text-2xl font-bold">DiDi</span>
+    <header>
+        <nav class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <span>🤖</span>
+                    <span>DiDi</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="hover:text-gray-200 transition">Funcionalidades</a>
-                    <a href="#how-it-works" class="hover:text-gray-200 transition">Como Funciona</a>
-                    <a href="#contact" class="hover:text-gray-200 transition">Contato</a>
+                <div class="nav-links">
+                    <a href="#features">Funcionalidades</a>
+                    <a href="#how-it-works">Como Funciona</a>
+                    <a href="#contact">Contato</a>
                 </div>
             </div>
         </nav>
 
         <!-- Hero Section -->
-        <div class="container mx-auto px-6 py-20 md:py-32 text-center">
-            <img src="didi-avatar.png" alt="DiDi Avatar" class="didi-avatar mx-auto mb-8">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        <div class="hero container">
+            <img src="didi-avatar.png" alt="DiDi Avatar" class="didi-avatar">
+            <h1>
                 Seu Assistente Pessoal<br>
-                <span class="text-indigo-200">Sempre à Disposição</span>
+                <span>Sempre à Disposição</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-8 text-indigo-100 max-w-3xl mx-auto">
+            <p>
                 DiDi é um assistente pessoal baseado em IA que gerencia sua vida digital via WhatsApp.
                 Emails, calendário, lembretes, notas e muito mais — tudo em um só lugar.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#features" class="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
-                    Conheça as Funcionalidades
-                </a>
-                <a href="https://github.com/djalmaaraujo/didi" target="_blank" class="bg-indigo-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-900 transition shadow-lg">
-                    Ver no GitHub
-                </a>
+            <div class="cta-buttons">
+                <a href="#features" class="btn btn-primary">Conheça as Funcionalidades</a>
+                <a href="https://github.com/djalmaaraujo/didi" target="_blank" class="btn btn-secondary">Ver no GitHub</a>
             </div>
         </div>
     </header>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">✨ Funcionalidades</h2>
-                <p class="text-xl text-gray-600">Tudo que você precisa para organizar sua vida digital</p>
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>✨ Funcionalidades</h2>
+                <p>Tudo que você precisa para organizar sua vida digital</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature Card 1 -->
-                <div class="feature-card bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📧</div>
-                    <h3 class="text-2xl font-bold mb-3">Emails</h3>
-                    <p class="text-gray-700">Leia, busque, envie e gerencie emails direto pelo WhatsApp. Integração total com Mail.app.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>Emails</h3>
+                    <p>Leia, busque, envie e gerencie emails direto pelo WhatsApp. Integração total com Mail.app.</p>
                 </div>
 
-                <!-- Feature Card 2 -->
-                <div class="feature-card bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📅</div>
-                    <h3 class="text-2xl font-bold mb-3">Calendário</h3>
-                    <p class="text-gray-700">Crie eventos, consulte agenda e receba alertas automáticos de reuniões.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendário</h3>
+                    <p>Crie eventos, consulte agenda e receba alertas automáticos de reuniões.</p>
                 </div>
 
-                <!-- Feature Card 3 -->
-                <div class="feature-card bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">⏰</div>
-                    <h3 class="text-2xl font-bold mb-3">Lembretes</h3>
-                    <p class="text-gray-700">Nunca mais esqueça compromissos. Crie lembretes com horário personalizado.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">⏰</div>
+                    <h3>Lembretes</h3>
+                    <p>Nunca mais esqueça compromissos. Crie lembretes com horário personalizado.</p>
                 </div>
 
-                <!-- Feature Card 4 -->
-                <div class="feature-card bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📝</div>
-                    <h3 class="text-2xl font-bold mb-3">Notas</h3>
-                    <p class="text-gray-700">Gerencie anotações de qualquer lugar. Busque, crie e edite notas facilmente.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Notas</h3>
+                    <p>Gerencie anotações de qualquer lugar. Busque, crie e edite notas facilmente.</p>
                 </div>
 
-                <!-- Feature Card 5 -->
-                <div class="feature-card bg-gradient-to-br from-red-50 to-rose-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">🧠</div>
-                    <h3 class="text-2xl font-bold mb-3">Memória</h3>
-                    <p class="text-gray-700">O DiDi guarda informações importantes sobre você de forma organizada e versionada.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Memória</h3>
+                    <p>O DiDi guarda informações importantes sobre você de forma organizada e versionada.</p>
                 </div>
 
-                <!-- Feature Card 6 -->
-                <div class="feature-card bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📄</div>
-                    <h3 class="text-2xl font-bold mb-3">Invoices</h3>
-                    <p class="text-gray-700">Gere faturas profissionais bilíngues (PT/EN) com um único comando.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Invoices</h3>
+                    <p>Gere faturas profissionais bilíngues (PT/EN) com um único comando.</p>
                 </div>
 
-                <!-- Feature Card 7 -->
-                <div class="feature-card bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">🎙️</div>
-                    <h3 class="text-2xl font-bold mb-3">Reuniões</h3>
-                    <p class="text-gray-700">Gravação e transcrição automática de meetings com análise via IA.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Reuniões</h3>
+                    <p>Gravação e transcrição automática de meetings com análise via IA.</p>
                 </div>
 
-                <!-- Feature Card 8 -->
-                <div class="feature-card bg-gradient-to-br from-pink-50 to-purple-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📊</div>
-                    <h3 class="text-2xl font-bold mb-3">Resumo Diário</h3>
-                    <p class="text-gray-700">Receba um resumo matinal com emails não lidos, eventos do dia e lembretes.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Resumo Diário</h3>
+                    <p>Receba um resumo matinal com emails não lidos, eventos do dia e lembretes.</p>
                 </div>
 
-                <!-- Feature Card 9 -->
-                <div class="feature-card bg-gradient-to-br from-teal-50 to-green-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📱</div>
-                    <h3 class="text-2xl font-bold mb-3">WhatsApp</h3>
-                    <p class="text-gray-700">Acesso completo via mensagens de texto. Envie imagens, áudios, documentos e mais.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <p>Acesso completo via mensagens de texto. Envie imagens, áudios, documentos e mais.</p>
                 </div>
 
-                <!-- Feature Card 10 -->
-                <div class="feature-card bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">🔍</div>
-                    <h3 class="text-2xl font-bold mb-3">Busca na Web</h3>
-                    <p class="text-gray-700">Pesquise informações atualizadas em tempo real e receba respostas completas.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Busca na Web</h3>
+                    <p>Pesquise informações atualizadas em tempo real e receba respostas completas.</p>
                 </div>
 
-                <!-- Feature Card 11 -->
-                <div class="feature-card bg-gradient-to-br from-violet-50 to-purple-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">🎤</div>
-                    <h3 class="text-2xl font-bold mb-3">Text-to-Speech</h3>
-                    <p class="text-gray-700">Converta textos em áudio com voz clonada em português brasileiro.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Text-to-Speech</h3>
+                    <p>Converta textos em áudio com voz clonada em português brasileiro.</p>
                 </div>
 
-                <!-- Feature Card 12 -->
-                <div class="feature-card bg-gradient-to-br from-slate-50 to-gray-50 p-8 rounded-xl shadow-md">
-                    <div class="text-5xl mb-4">📇</div>
-                    <h3 class="text-2xl font-bold mb-3">Contatos</h3>
-                    <p class="text-gray-700">Acesse e compartilhe informações de contatos com busca inteligente.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">📇</div>
+                    <h3>Contatos</h3>
+                    <p>Acesse e compartilhe informações de contatos com busca inteligente.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how-it-works" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">🚀 Como Funciona?</h2>
-                <p class="text-xl text-gray-600">Tecnologia moderna para facilitar sua vida</p>
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>🚀 Como Funciona?</h2>
+                <p>Tecnologia moderna para facilitar sua vida</p>
             </div>
 
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-4">🤖 Arquitetura</h3>
-                    <p class="text-gray-700 mb-4">
-                        DiDi é um servidor Python baseado no <strong>Claude Agent SDK da Anthropic</strong>,
-                        rodando 24/7 e acessível remotamente via WhatsApp através de webhooks.
-                    </p>
-                    <p class="text-gray-700">
-                        Ele se integra nativamente com suas ferramentas do macOS (Mail.app, Calendar.app,
-                        Reminders.app, Notes.app, Contacts.app) e oferece automações personalizadas.
-                    </p>
-                </div>
+            <div class="content-box">
+                <h3>🤖 Arquitetura</h3>
+                <p>
+                    DiDi é um servidor Python baseado no <strong>Claude Agent SDK da Anthropic</strong>,
+                    rodando 24/7 e acessível remotamente via WhatsApp através de webhooks.
+                </p>
+                <p>
+                    Ele se integra nativamente com suas ferramentas do macOS (Mail.app, Calendar.app,
+                    Reminders.app, Notes.app, Contacts.app) e oferece automações personalizadas.
+                </p>
+            </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-4">🔧 Tecnologias</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <span class="text-2xl mr-3">✓</span>
-                            <span class="text-gray-700"><strong>Python + FastAPI</strong> - Backend moderno e performático</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-2xl mr-3">✓</span>
-                            <span class="text-gray-700"><strong>Claude Agent SDK</strong> - IA avançada da Anthropic</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-2xl mr-3">✓</span>
-                            <span class="text-gray-700"><strong>AppleScript</strong> - Integração nativa com macOS</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-2xl mr-3">✓</span>
-                            <span class="text-gray-700"><strong>WhatsApp Business API</strong> - Comunicação via mensagens</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-2xl mr-3">✓</span>
-                            <span class="text-gray-700"><strong>F5-TTS</strong> - Síntese de voz em português brasileiro</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="content-box">
+                <h3>🔧 Tecnologias</h3>
+                <ul>
+                    <li>
+                        <span>✓</span>
+                        <span><strong>Python + FastAPI</strong> - Backend moderno e performático</span>
+                    </li>
+                    <li>
+                        <span>✓</span>
+                        <span><strong>Claude Agent SDK</strong> - IA avançada da Anthropic</span>
+                    </li>
+                    <li>
+                        <span>✓</span>
+                        <span><strong>AppleScript</strong> - Integração nativa com macOS</span>
+                    </li>
+                    <li>
+                        <span>✓</span>
+                        <span><strong>WhatsApp Business API</strong> - Comunicação via mensagens</span>
+                    </li>
+                    <li>
+                        <span>✓</span>
+                        <span><strong>F5-TTS</strong> - Síntese de voz em português brasileiro</span>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-8">
-                    <h3 class="text-2xl font-bold mb-4">🌟 Open Source</h3>
-                    <p class="text-gray-700 mb-4">
-                        Todo o código está disponível no GitHub sob licença open source.
-                        Você pode usar, modificar e contribuir com o projeto.
-                    </p>
-                    <a href="https://github.com/djalmaaraujo/didi" target="_blank"
-                       class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-800 transition">
-                        Ver repositório no GitHub →
-                    </a>
-                </div>
+            <div class="content-box">
+                <h3>🌟 Open Source</h3>
+                <p>
+                    Todo o código está disponível no GitHub sob licença open source.
+                    Você pode usar, modificar e contribuir com o projeto.
+                </p>
+                <a href="https://github.com/djalmaaraujo/didi" target="_blank">
+                    Ver repositório no GitHub →
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto">
-                <h2 class="text-4xl font-bold mb-6">💬 Interessado?</h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    Quer saber mais sobre o DiDi ou tem interesse em implementar seu próprio assistente pessoal?
-                    Entre em contato!
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="mailto:weare@nossomos.cc"
-                       class="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition shadow-lg">
-                        📧 Email: weare@nossomos.cc
-                    </a>
-                    <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi"
-                       target="_blank"
-                       class="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition shadow-lg">
-                        📱 WhatsApp
-                    </a>
-                </div>
+    <section id="contact">
+        <div class="container contact-section">
+            <h2>💬 Interessado?</h2>
+            <p>
+                Quer saber mais sobre o DiDi ou tem interesse em implementar seu próprio assistente pessoal?
+                Entre em contato!
+            </p>
+            <div class="contact-buttons">
+                <a href="mailto:weare@nossomos.cc" class="btn btn-contact-email">
+                    📧 Email: weare@nossomos.cc
+                </a>
+                <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi" target="_blank" class="btn btn-contact-whatsapp">
+                    📱 WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center space-x-2 mb-2">
-                        <span class="text-3xl">🤖</span>
-                        <span class="text-xl font-bold">DiDi</span>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <span>🤖</span>
+                        <span>DiDi</span>
                     </div>
-                    <p class="text-indigo-200">Seu assistente pessoal inteligente</p>
+                    <p class="footer-tagline">Seu assistente pessoal inteligente</p>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6 text-center md:text-left">
+                <div class="footer-links">
                     <div>
-                        <p class="mb-2">Desenvolvido por</p>
-                        <a href="https://nossomos.cc" target="_blank" class="font-semibold hover:text-indigo-200 transition">
-                            Code Consultants
-                        </a>
+                        <p>Desenvolvido por</p>
+                        <a href="https://nossomos.cc" target="_blank">Code Consultants</a>
                     </div>
                     <div>
-                        <p class="mb-2">Open Source</p>
-                        <a href="https://github.com/djalmaaraujo/didi" target="_blank" class="font-semibold hover:text-indigo-200 transition">
-                            GitHub
-                        </a>
+                        <p>Open Source</p>
+                        <a href="https://github.com/djalmaaraujo/didi" target="_blank">GitHub</a>
                     </div>
                     <div>
-                        <p class="mb-2">Termos</p>
-                        <a href="terms-and-usage.html" class="font-semibold hover:text-indigo-200 transition">
-                            Termos de Uso
-                        </a>
+                        <p>Termos</p>
+                        <a href="terms-and-usage.html">Termos de Uso</a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-indigo-400 mt-8 pt-8 text-center text-indigo-200">
+            <div class="footer-bottom">
                 <p>&copy; 2024-2026 DiDi. Todos os direitos reservados.</p>
             </div>
         </div>
@@ -316,6 +655,5 @@
             });
         });
     </script>
-
 </body>
 </html>
