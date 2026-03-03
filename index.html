@@ -9,314 +9,522 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Google Fonts -->
+    <!-- Geist Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100;200;300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --gradient-start: #667eea;
-            --gradient-end: #764ba2;
+            --bg: #ffffff;
+            --bg-secondary: #fafafa;
+            --fg: #09090b;
+            --fg-muted: #71717a;
+            --border: #e4e4e7;
+            --border-hover: #a1a1aa;
+            --radius: 0.75rem;
+            --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Geist Mono', ui-monospace, monospace;
         }
+
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
+            color: var(--fg);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+        /* Override Bootstrap defaults */
+        .text-muted { color: var(--fg-muted) !important; }
+
+        /* ── Navbar ── */
+        .navbar-custom {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
+        }
+
+        .navbar-custom .navbar-brand {
+            color: var(--fg);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .navbar-custom .nav-link {
+            color: var(--fg-muted);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.15s;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: var(--fg);
+        }
+
+        .navbar-custom .navbar-toggler {
+            border-color: var(--border);
+        }
+
+        .navbar-custom .navbar-toggler-icon {
+            filter: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2309090b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ── Hero ── */
+        .hero-section {
+            padding: 6rem 0 5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-section h1 {
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            color: var(--fg);
+        }
+
+        .hero-section .lead {
+            color: var(--fg-muted);
+            font-weight: 400;
+            line-height: 1.7;
         }
 
         .didi-avatar {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--border);
+            filter: grayscale(100%);
+            transition: filter 0.3s;
         }
 
-        .feature-card {
-            transition: transform 0.3s ease;
-            height: 100%;
-            border: none;
+        .didi-avatar:hover {
+            filter: grayscale(0%);
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
+        /* ── Buttons ── */
+        .btn-primary-custom {
+            background: var(--fg);
+            color: var(--bg);
+            border: 1px solid var(--fg);
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.625rem 1.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            transition: opacity 0.15s;
         }
 
-        .feature-icon {
-            font-size: 3rem;
+        .btn-primary-custom:hover {
+            background: var(--fg);
+            color: var(--bg);
+            opacity: 0.85;
         }
 
-        .hero-section {
+        .btn-outline-custom {
+            background: var(--bg);
+            color: var(--fg);
+            border: 1px solid var(--border);
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.625rem 1.5rem;
+            border-radius: calc(var(--radius) - 2px);
+            transition: all 0.15s;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-hover);
+            color: var(--fg);
+        }
+
+        /* ── Tech Badge ── */
+        .tech-badge {
+            display: inline-block;
+            padding: 0.25rem 0.625rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            background: var(--bg-secondary);
+            color: var(--fg-muted);
+            border: 1px solid var(--border);
+        }
+
+        /* ── Sections ── */
+        section {
             padding: 5rem 0;
         }
 
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 3rem 0;
-            }
-
-            h1 {
-                font-size: 2.5rem !important;
-            }
+        section + section {
+            border-top: 1px solid var(--border);
         }
 
-        .btn-custom-primary {
-            background-color: white;
-            color: #6366f1;
+        .section-title {
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.03em;
+            color: var(--fg);
+        }
+
+        .section-subtitle {
+            color: var(--fg-muted);
+            font-size: 1.05rem;
+        }
+
+        /* ── Feature Cards ── */
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            height: 100%;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: calc(var(--radius) - 2px);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .feature-card .card-title {
             font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            color: var(--fg);
         }
 
-        .btn-custom-primary:hover {
-            background-color: #f3f4f6;
-            color: #6366f1;
+        .feature-card .card-text {
+            font-size: 0.875rem;
+            color: var(--fg-muted);
+            line-height: 1.6;
         }
 
-        .btn-custom-secondary {
-            background-color: #4338ca;
-            color: white;
-            font-weight: 600;
-        }
-
-        .btn-custom-secondary:hover {
-            background-color: #3730a3;
-        }
-
-        .content-box {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #c7d2fe;
-        }
-
-        .tech-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(4px);
+        /* ── Automation ── */
+        .automation-list {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
         }
 
         .automation-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
+            gap: 1rem;
+            padding: 0.875rem 1.25rem;
         }
 
         .automation-item + .automation-item {
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--border);
+        }
+
+        .automation-item:hover {
+            background: var(--bg-secondary);
         }
 
         .automation-time {
-            font-family: 'Inter', monospace;
+            font-family: var(--font-mono);
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--fg);
+            min-width: 90px;
+            background: var(--bg-secondary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .automation-desc {
+            font-size: 0.875rem;
+            color: var(--fg-muted);
+        }
+
+        /* ── Architecture Steps ── */
+        .step-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .step-box:hover {
+            border-color: var(--border-hover);
+        }
+
+        .step-number {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--fg);
+            color: var(--bg);
+            flex-shrink: 0;
+        }
+
+        .step-box h4 {
             font-weight: 600;
-            font-size: 0.85rem;
-            color: #6366f1;
-            min-width: 80px;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+        }
+
+        .step-box p {
+            font-size: 0.875rem;
+            color: var(--fg-muted);
+            line-height: 1.6;
+        }
+
+        /* ── Differentials ── */
+        .diff-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+        }
+
+        .diff-text {
+            font-size: 0.875rem;
+            color: var(--fg-muted);
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        footer a:hover {
+            color: var(--bg);
+        }
+
+        footer .footer-muted {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3.5rem 0 3rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.25rem !important;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <nav class="navbar navbar-expand-md navbar-dark container">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                    <span class="fs-3">🤖</span>
-                    <span class="fw-bold fs-4">DiDi</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#features">Funcionalidades</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#automation">Automações</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#how-it-works">Arquitetura</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-                    </ul>
-                </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="didi-avatar.png" alt="DiDi" width="28" height="28" style="border-radius: 50%;">
+                <span>didi</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#automation">Automations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <div class="hero-section text-center">
-            <div class="container">
-                <img src="didi-avatar.png" alt="DiDi" class="didi-avatar mb-4">
-                <h1 class="display-3 fw-bold mb-3">
-                    Assistente Pessoal com IA<br>
-                    <span class="text-white-50">Disponível 24/7 no WhatsApp</span>
-                </h1>
-                <p class="lead mb-4 mx-auto" style="max-width: 768px; opacity: 0.9;">
-                    Construído com Claude Agent SDK, o DiDi gerencia finanças, agenda, viagens, foco e produtividade
-                    — tudo através de linguagem natural via WhatsApp.
-                </p>
-                <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
-                    <span class="tech-badge">Claude Agent SDK</span>
-                    <span class="tech-badge">WhatsApp Business API</span>
-                    <span class="tech-badge">Google Calendar MCP</span>
-                    <span class="tech-badge">Gmail MCP</span>
-                    <span class="tech-badge">FastAPI</span>
-                </div>
-                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                    <a href="#features" class="btn btn-lg btn-custom-primary shadow">Ver Funcionalidades</a>
-                    <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi" target="_blank" class="btn btn-lg btn-custom-secondary shadow">Falar no WhatsApp</a>
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <img src="didi-avatar.png" alt="DiDi" class="didi-avatar mb-4">
+                    <h1 class="display-4 mb-3">
+                        Assistente pessoal com IA,<br>
+                        <span class="text-muted">direto no WhatsApp.</span>
+                    </h1>
+                    <p class="lead mb-4 mx-auto" style="max-width: 560px;">
+                        Construído com Claude Agent SDK. Gerencia finanças, agenda, viagens,
+                        foco e produtividade — tudo com linguagem natural.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+                        <span class="tech-badge">Claude Agent SDK</span>
+                        <span class="tech-badge">WhatsApp Business API</span>
+                        <span class="tech-badge">Google Calendar MCP</span>
+                        <span class="tech-badge">Gmail MCP</span>
+                        <span class="tech-badge">FastAPI</span>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+                        <a href="#features" class="btn btn-primary-custom">Ver funcionalidades</a>
+                        <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi" target="_blank" class="btn btn-outline-custom">Falar no WhatsApp &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-5">
+    <!-- Features -->
+    <section id="features">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">✨ O que o DiDi faz</h2>
-                <p class="lead text-muted">19 skills modulares carregadas sob demanda</p>
+                <h2 class="section-title mb-2">Features</h2>
+                <p class="section-subtitle">19 skills modulares carregadas sob demanda</p>
             </div>
 
-            <div class="row g-4">
-                <!-- Feature: Pagamentos -->
+            <div class="row g-3">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #dcfce7;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💰</div>
-                            <h5 class="card-title fw-bold">Gestão Financeira</h5>
-                            <p class="card-text">Pagamentos recorrentes e avulsos, controle de saldo (Nubank/Bradesco), forecast por conta, matching de comprovantes com IA e painel admin web.</p>
+                            <h5 class="card-title">Gestão Financeira</h5>
+                            <p class="card-text">Pagamentos recorrentes e avulsos, controle de saldo, forecast por conta, matching de comprovantes com IA e painel admin web.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Calendar -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #fae8ff;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📅</div>
-                            <h5 class="card-title fw-bold">Agenda & Reuniões</h5>
-                            <p class="card-text">Google Calendar via MCP. Cria eventos, consulta agenda, alertas automáticos antes de reuniões, busca horários livres e convida participantes.</p>
+                            <h5 class="card-title">Agenda & Reuniões</h5>
+                            <p class="card-text">Google Calendar via MCP. Cria eventos, consulta agenda, alertas automáticos antes de reuniões, busca horários livres.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: TDAH -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #fef3c7;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🧩</div>
-                            <h5 class="card-title fw-bold">Foco TDAH</h5>
-                            <p class="card-text">Regra dos 3: 1 inadiável + 2 importantes por dia. Depósito de tarefas, check-ins automáticos ao longo do dia e protocolo de encerramento noturno.</p>
+                            <h5 class="card-title">Foco TDAH</h5>
+                            <p class="card-text">Regra dos 3: 1 inadiável + 2 importantes por dia. Depósito de tarefas, check-ins automáticos e protocolo de encerramento noturno.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Email -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card bg-primary bg-opacity-10">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📧</div>
-                            <h5 class="card-title fw-bold">Gmail</h5>
+                            <h5 class="card-title">Gmail</h5>
                             <p class="card-text">Leia, busque e crie rascunhos de email via MCP — tudo sem sair do WhatsApp. Busca por remetente, assunto ou conteúdo.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Trips -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #e0f2fe;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">✈️</div>
-                            <h5 class="card-title fw-bold">Gestão de Viagens</h5>
-                            <p class="card-text">Registra voos, hotéis e conexões a partir de PDFs. Cria lembretes automáticos (malas, check-in, aeroporto). Tracking de status de voo em tempo real.</p>
+                            <h5 class="card-title">Gestão de Viagens</h5>
+                            <p class="card-text">Registra voos, hotéis e conexões a partir de PDFs. Lembretes automáticos de malas, check-in e aeroporto. Tracking de voos.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Reminders -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card bg-success bg-opacity-10">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">⏰</div>
-                            <h5 class="card-title fw-bold">Lembretes</h5>
+                            <h5 class="card-title">Lembretes</h5>
                             <p class="card-text">Cria lembretes no Google Calendar com notificação via WhatsApp. Verificação a cada 2 minutos para nunca perder nada.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Poupancudo -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #fce7f3;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💸</div>
-                            <h5 class="card-title fw-bold">Poupançudo</h5>
-                            <p class="card-text">Gestão de empréstimos pessoais com juros compostos. Registra devedores, aportes, pagamentos e gera resumo semanal automático.</p>
+                            <h5 class="card-title">Poupançudo</h5>
+                            <p class="card-text">Gestão de empréstimos pessoais com juros compostos. Registra devedores, aportes, pagamentos e resumo semanal automático.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Memory -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card bg-danger bg-opacity-10">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🧠</div>
-                            <h5 class="card-title fw-bold">Memória de Longo Prazo</h5>
-                            <p class="card-text">Armazena informações pessoais categorizadas (finanças, documentos, saúde, trabalho). Versionada com Git e compactação diária automática.</p>
+                            <h5 class="card-title">Memória de Longo Prazo</h5>
+                            <p class="card-text">Armazena informações pessoais categorizadas. Versionada com Git e compactação diária automática a partir do histórico.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Daily Summary -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #fed7aa;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📊</div>
-                            <h5 class="card-title fw-bold">Resumo Diário</h5>
+                            <h5 class="card-title">Resumo Diário</h5>
                             <p class="card-text">Briefing matinal automático às 7h com agenda do dia, lembretes pendentes e pagamentos próximos — direto no WhatsApp.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Invoices -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card bg-info bg-opacity-25">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📄</div>
-                            <h5 class="card-title fw-bold">Faturas & Invoices</h5>
+                            <h5 class="card-title">Faturas & Invoices</h5>
                             <p class="card-text">Gera invoices profissionais em PDF. Gerenciamento de clientes, envio direto por email e controle de status.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Projects -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #e0e7ff;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💼</div>
-                            <h5 class="card-title fw-bold">Projetos de Software</h5>
-                            <p class="card-text">Kanban boards com pipeline multi-agente: planner, coder, debugger e reviewer trabalham em background para implementar features.</p>
+                            <h5 class="card-title">Projetos de Software</h5>
+                            <p class="card-text">Kanban boards com pipeline multi-agente: planner, coder, debugger e reviewer trabalham em background.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature: Web Search -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="card feature-card" style="background-color: #ccfbf1;">
+                    <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🔍</div>
-                            <h5 class="card-title fw-bold">Pesquisa na Web</h5>
+                            <h5 class="card-title">Pesquisa na Web</h5>
                             <p class="card-text">Busca informações atualizadas na internet e analisa páginas web em tempo real para responder qualquer pergunta.</p>
                         </div>
                     </div>
@@ -325,60 +533,60 @@
         </div>
     </section>
 
-    <!-- Automation Section -->
-    <section id="automation" class="py-5 bg-light">
+    <!-- Automations -->
+    <section id="automation">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">⚙️ Automações em Background</h2>
-                <p class="lead text-muted">O DiDi trabalha mesmo quando você não está falando com ele</p>
+                <h2 class="section-title mb-2">Automations</h2>
+                <p class="section-subtitle">Trabalha em background mesmo quando você não está falando com ele</p>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="content-box p-4">
+                    <div class="automation-list">
                         <div class="automation-item">
-                            <span class="automation-time">a cada 2 min</span>
-                            <span>⏰ Verifica lembretes e envia notificações</span>
+                            <span class="automation-time">a cada 2m</span>
+                            <span class="automation-desc">Verifica lembretes e envia notificações</span>
                         </div>
                         <div class="automation-item">
-                            <span class="automation-time">a cada 2 min</span>
-                            <span>📅 Monitora eventos do calendário</span>
+                            <span class="automation-time">a cada 2m</span>
+                            <span class="automation-desc">Monitora eventos do calendário</span>
                         </div>
                         <div class="automation-item">
-                            <span class="automation-time">a cada 2 min</span>
-                            <span>🔄 Auto-update: puxa atualizações do Git automaticamente</span>
+                            <span class="automation-time">a cada 2m</span>
+                            <span class="automation-desc">Auto-update via Git</span>
                         </div>
                         <div class="automation-item">
-                            <span class="automation-time">a cada 5 min</span>
-                            <span>🔔 Alertas pré-reunião via WhatsApp</span>
+                            <span class="automation-time">a cada 5m</span>
+                            <span class="automation-desc">Alertas pré-reunião via WhatsApp</span>
                         </div>
                         <div class="automation-item">
-                            <span class="automation-time">a cada 5 min</span>
-                            <span>✈️ Tracking de pouso de voos</span>
+                            <span class="automation-time">a cada 5m</span>
+                            <span class="automation-desc">Tracking de pouso de voos</span>
                         </div>
                         <div class="automation-item">
                             <span class="automation-time">07:00</span>
-                            <span>📊 Resumo diário matinal</span>
+                            <span class="automation-desc">Resumo diário matinal</span>
                         </div>
                         <div class="automation-item">
                             <span class="automation-time">09–19h</span>
-                            <span>🧩 Check-ins de foco TDAH (manhã, 11h, 13h, 15h, 17h, 19h)</span>
+                            <span class="automation-desc">Check-ins de foco TDAH</span>
                         </div>
                         <div class="automation-item">
                             <span class="automation-time">20:00</span>
-                            <span>🌙 Protocolo de encerramento do dia + planejamento do dia seguinte</span>
+                            <span class="automation-desc">Encerramento do dia + planejamento</span>
                         </div>
                         <div class="automation-item">
                             <span class="automation-time">00:05</span>
-                            <span>💰 Geração de ocorrências de pagamentos e atualização de status</span>
+                            <span class="automation-desc">Geração de ocorrências de pagamentos</span>
                         </div>
                         <div class="automation-item">
                             <span class="automation-time">01:00</span>
-                            <span>🧠 Compactação diária de memória a partir do histórico</span>
+                            <span class="automation-desc">Compactação de memória</span>
                         </div>
                         <div class="automation-item">
-                            <span class="automation-time">sexta 20h</span>
-                            <span>💸 Resumo semanal de empréstimos (Poupançudo)</span>
+                            <span class="automation-time">sex 20h</span>
+                            <span class="automation-desc">Resumo semanal de empréstimos</span>
                         </div>
                     </div>
                 </div>
@@ -386,71 +594,54 @@
         </div>
     </section>
 
-    <!-- Architecture / How It Works -->
-    <section id="how-it-works" class="py-5">
+    <!-- Architecture -->
+    <section id="architecture">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">🏗️ Arquitetura</h2>
-                <p class="lead text-muted">Como o DiDi funciona por dentro</p>
+                <h2 class="section-title mb-2">Architecture</h2>
+                <p class="section-subtitle">Como o DiDi funciona por dentro</p>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <!-- Step 1 -->
-                    <div class="content-box p-4 mb-4">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="fs-1 text-primary fw-bold">1</div>
-                            <div>
-                                <h4 class="fw-bold mb-2">Mensagem chega via WhatsApp</h4>
-                                <p class="mb-0">
-                                    A mensagem é recebida pela Meta Cloud API via webhook n8n,
-                                    que encaminha para o servidor FastAPI rodando na porta 7254 via Tailscale VPN.
-                                </p>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="step-box">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="step-number">1</div>
+                                <div>
+                                    <h4 class="mb-1">Mensagem chega via WhatsApp</h4>
+                                    <p class="mb-0">Meta Cloud API via webhook n8n encaminha para o servidor FastAPI via Tailscale VPN.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Step 2 -->
-                    <div class="content-box p-4 mb-4">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="fs-1 text-primary fw-bold">2</div>
-                            <div>
-                                <h4 class="fw-bold mb-2">Claude Agent SDK processa</h4>
-                                <p class="mb-0">
-                                    O servidor mantém uma sessão streaming persistente com o Claude.
-                                    O system prompt carrega tools essenciais e skills são ativadas sob demanda
-                                    conforme o contexto da mensagem — otimizando prompt caching.
-                                </p>
+                        <div class="step-box">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="step-number">2</div>
+                                <div>
+                                    <h4 class="mb-1">Claude Agent SDK processa</h4>
+                                    <p class="mb-0">Sessão streaming persistente. System prompt carrega tools essenciais, skills ativadas sob demanda via prompt caching.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Step 3 -->
-                    <div class="content-box p-4 mb-4">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="fs-1 text-primary fw-bold">3</div>
-                            <div>
-                                <h4 class="fw-bold mb-2">Tools e MCPs executam</h4>
-                                <p class="mb-0">
-                                    O agente acessa Google Calendar, Gmail, banco de dados de pagamentos,
-                                    gerenciador de memória, sistema de viagens e mais — tudo via tools Python
-                                    e servidores MCP integrados.
-                                </p>
+                        <div class="step-box">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="step-number">3</div>
+                                <div>
+                                    <h4 class="mb-1">Tools e MCPs executam</h4>
+                                    <p class="mb-0">Google Calendar, Gmail, banco de dados de pagamentos, gerenciador de memória, sistema de viagens — via tools Python e servidores MCP.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Step 4 -->
-                    <div class="content-box p-4">
-                        <div class="d-flex align-items-start gap-3">
-                            <div class="fs-1 text-primary fw-bold">4</div>
-                            <div>
-                                <h4 class="fw-bold mb-2">Resposta formatada para WhatsApp</h4>
-                                <p class="mb-0">
-                                    A resposta é formatada com emojis, negrito e listas —
-                                    otimizada para leitura rápida no celular. Suporta envio de imagens,
-                                    áudios, documentos, localizações e mensagens interativas.
-                                </p>
+                        <div class="step-box">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="step-number">4</div>
+                                <div>
+                                    <h4 class="mb-1">Resposta formatada para WhatsApp</h4>
+                                    <p class="mb-0">Formatada para leitura rápida no celular. Suporta imagens, áudios, documentos, localizações e mensagens interativas.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -459,61 +650,61 @@
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="py-5 bg-light">
+    <!-- Differentials -->
+    <section>
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">💡 Diferenciais</h2>
+                <h2 class="section-title mb-2">Diferenciais</h2>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
-                        <div class="fs-1 mb-3">🔄</div>
-                        <h5 class="fw-bold mb-2">Self-Healing</h5>
-                        <p class="text-muted">Auto-restart via supervisord, auto-update via Git e resolução de conflitos com IA</p>
+                        <div class="feature-icon mx-auto mb-3">🔄</div>
+                        <h5 class="diff-title mb-2">Self-Healing</h5>
+                        <p class="diff-text">Auto-restart via supervisord, auto-update via Git e resolução de conflitos com IA.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
-                        <div class="fs-1 mb-3">🧠</div>
-                        <h5 class="fw-bold mb-2">Memória Persistente</h5>
-                        <p class="text-muted">Lembra de informações pessoais, compacta histórico diariamente e aprende preferências</p>
+                        <div class="feature-icon mx-auto mb-3">🧠</div>
+                        <h5 class="diff-title mb-2">Memória Persistente</h5>
+                        <p class="diff-text">Lembra informações pessoais, compacta histórico diariamente e aprende preferências.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
-                        <div class="fs-1 mb-3">⚡</div>
-                        <h5 class="fw-bold mb-2">Proativo</h5>
-                        <p class="text-muted">Não espera você perguntar — envia alertas, resumos e check-ins automaticamente</p>
+                        <div class="feature-icon mx-auto mb-3">⚡</div>
+                        <h5 class="diff-title mb-2">Proativo</h5>
+                        <p class="diff-text">Não espera perguntar — envia alertas, resumos e check-ins automaticamente.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
-                        <div class="fs-1 mb-3">🔒</div>
-                        <h5 class="fw-bold mb-2">Privado</h5>
-                        <p class="text-muted">Roda em servidor próprio via Tailscale VPN — seus dados nunca passam por terceiros</p>
+                        <div class="feature-icon mx-auto mb-3">🔒</div>
+                        <h5 class="diff-title mb-2">Privado</h5>
+                        <p class="diff-text">Roda em servidor próprio via Tailscale VPN — seus dados nunca passam por terceiros.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
+    <!-- Contact -->
+    <section id="contact">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <h2 class="display-5 fw-bold mb-3">💬 Quer saber mais?</h2>
-                    <p class="lead text-muted mb-4">
-                        Entre em contato para conhecer melhor o DiDi e descobrir como ele pode facilitar sua rotina.
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-2">Quer saber mais?</h2>
+                    <p class="section-subtitle mb-4">
+                        Entre em contato para conhecer melhor o DiDi.
                     </p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="mailto:weare@nossomos.cc" class="btn btn-lg btn-primary shadow">
-                            📧 weare@nossomos.cc
+                    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+                        <a href="mailto:weare@nossomos.cc" class="btn btn-outline-custom">
+                            weare@nossomos.cc
                         </a>
-                        <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi" target="_blank" class="btn btn-lg btn-success shadow">
-                            📱 Falar no WhatsApp
+                        <a href="https://whatsa.me/5581989800660/?t=Olá,%20quero%20saber%20mais%20sobre%20o%20DiDi" target="_blank" class="btn btn-primary-custom">
+                            Falar no WhatsApp &rarr;
                         </a>
                     </div>
                 </div>
@@ -522,32 +713,21 @@
     </section>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white py-5">
+    <footer class="py-4">
         <div class="container">
-            <div class="row align-items-center mb-4">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <div class="d-flex align-items-center gap-2 justify-content-center justify-content-md-start mb-2">
-                        <span class="fs-4">🤖</span>
-                        <span class="fw-bold fs-5">DiDi</span>
-                    </div>
-                    <p class="mb-0 opacity-75">Assistente pessoal com IA via WhatsApp</p>
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+                    <span class="fw-semibold">didi</span>
+                    <span class="footer-muted ms-2" style="font-size: 0.85rem;">assistente pessoal com IA</span>
                 </div>
-                <div class="col-md-6">
-                    <div class="row text-center">
-                        <div class="col-6">
-                            <small class="d-block mb-1 opacity-75">Desenvolvido por</small>
-                            <a href="https://nossomos.cc" target="_blank" class="fw-semibold">Code Consultants</a>
-                        </div>
-                        <div class="col-6">
-                            <small class="d-block mb-1 opacity-75">Termos</small>
-                            <a href="terms-and-usage.html" class="fw-semibold">Termos de Uso</a>
-                        </div>
-                    </div>
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <a href="https://nossomos.cc" target="_blank" style="font-size: 0.85rem;">Code Consultants</a>
+                    <span class="footer-muted mx-2">·</span>
+                    <a href="terms-and-usage.html" style="font-size: 0.85rem;">Termos de Uso</a>
                 </div>
-            </div>
-            <hr class="border-white-50">
-            <div class="text-center opacity-75">
-                <small>&copy; 2024-2026 DiDi. Todos os direitos reservados.</small>
+                <div class="col-md-4 text-center text-md-end">
+                    <small class="footer-muted">&copy; 2024–2026</small>
+                </div>
             </div>
         </div>
     </footer>
