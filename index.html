@@ -40,39 +40,23 @@
         /* Override Bootstrap defaults */
         .text-muted { color: var(--fg-muted) !important; }
 
-        /* ── Navbar ── */
-        .navbar-custom {
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            padding: 0.75rem 0;
-        }
-
-        .navbar-custom .navbar-brand {
-            color: var(--fg);
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.02em;
-        }
-
-        .navbar-custom .nav-link {
-            color: var(--fg-muted);
-            font-size: 0.875rem;
-            font-weight: 500;
+        /* ── Skip Link ── */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background: var(--fg);
+            color: var(--bg);
             padding: 0.5rem 1rem;
-            transition: color 0.15s;
+            z-index: 9999;
+            font-size: 0.875rem;
+            text-decoration: none;
+            border-radius: 0 0 var(--radius) 0;
         }
 
-        .navbar-custom .nav-link:hover {
-            color: var(--fg);
-        }
-
-        .navbar-custom .navbar-toggler {
-            border-color: var(--border);
-        }
-
-        .navbar-custom .navbar-toggler-icon {
-            filter: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2309090b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        .skip-link:focus {
+            top: 0;
+            color: var(--bg);
         }
 
         /* ── Hero ── */
@@ -202,11 +186,13 @@
             border: 1px solid var(--border);
         }
 
-        .feature-card .card-title {
+        .feature-card .card-title,
+        .feature-card h3 {
             font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: -0.01em;
             color: var(--fg);
+            margin-bottom: 0.5rem;
         }
 
         .feature-card .card-text {
@@ -284,7 +270,7 @@
             flex-shrink: 0;
         }
 
-        .step-box h4 {
+        .step-box h3 {
             font-weight: 600;
             font-size: 0.95rem;
             letter-spacing: -0.01em;
@@ -350,33 +336,14 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-custom sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <img src="didi-avatar.png" alt="DiDi" width="28" height="28" style="border-radius: 50%;">
-                <span>didi</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#automation">Automations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <a href="#features" class="skip-link">Pular para o conteúdo</a>
 
     <!-- Hero -->
-    <section class="hero-section">
+    <header class="hero-section" role="banner">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <img src="didi-avatar.png" alt="DiDi" class="didi-avatar mb-4">
+                    <img src="didi-avatar.png" alt="" class="didi-avatar mb-4" role="presentation">
                     <h1 class="display-4 mb-3">
                         Assistente pessoal com IA,<br>
                         <span class="text-muted">direto no WhatsApp.</span>
@@ -399,13 +366,15 @@
                 </div>
             </div>
         </div>
-    </section>
+    </header>
+
+    <main id="features" role="main">
 
     <!-- Features -->
-    <section id="features">
+    <section aria-labelledby="features-title">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-2">Features</h2>
+                <h2 id="features-title" class="section-title mb-2">Features</h2>
                 <p class="section-subtitle">19 skills modulares carregadas sob demanda</p>
             </div>
 
@@ -414,7 +383,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💰</div>
-                            <h5 class="card-title">Gestão Financeira</h5>
+                            <h3 class="card-title">Gestão Financeira</h3>
                             <p class="card-text">Pagamentos recorrentes e avulsos, controle de saldo, forecast por conta, matching de comprovantes com IA e painel admin web.</p>
                         </div>
                     </div>
@@ -424,7 +393,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📅</div>
-                            <h5 class="card-title">Agenda & Reuniões</h5>
+                            <h3 class="card-title">Agenda & Reuniões</h3>
                             <p class="card-text">Google Calendar via MCP. Cria eventos, consulta agenda, alertas automáticos antes de reuniões, busca horários livres.</p>
                         </div>
                     </div>
@@ -434,7 +403,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🧩</div>
-                            <h5 class="card-title">Foco TDAH</h5>
+                            <h3 class="card-title">Foco TDAH</h3>
                             <p class="card-text">Regra dos 3: 1 inadiável + 2 importantes por dia. Depósito de tarefas, check-ins automáticos e protocolo de encerramento noturno.</p>
                         </div>
                     </div>
@@ -444,7 +413,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📧</div>
-                            <h5 class="card-title">Gmail</h5>
+                            <h3 class="card-title">Gmail</h3>
                             <p class="card-text">Leia, busque e crie rascunhos de email via MCP — tudo sem sair do WhatsApp. Busca por remetente, assunto ou conteúdo.</p>
                         </div>
                     </div>
@@ -454,7 +423,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">✈️</div>
-                            <h5 class="card-title">Gestão de Viagens</h5>
+                            <h3 class="card-title">Gestão de Viagens</h3>
                             <p class="card-text">Registra voos, hotéis e conexões a partir de PDFs. Lembretes automáticos de malas, check-in e aeroporto. Tracking de voos.</p>
                         </div>
                     </div>
@@ -464,7 +433,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">⏰</div>
-                            <h5 class="card-title">Lembretes</h5>
+                            <h3 class="card-title">Lembretes</h3>
                             <p class="card-text">Cria lembretes no Google Calendar com notificação via WhatsApp. Verificação a cada 2 minutos para nunca perder nada.</p>
                         </div>
                     </div>
@@ -474,7 +443,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💸</div>
-                            <h5 class="card-title">Poupançudo</h5>
+                            <h3 class="card-title">Poupançudo</h3>
                             <p class="card-text">Gestão de empréstimos pessoais com juros compostos. Registra devedores, aportes, pagamentos e resumo semanal automático.</p>
                         </div>
                     </div>
@@ -484,7 +453,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🧠</div>
-                            <h5 class="card-title">Memória de Longo Prazo</h5>
+                            <h3 class="card-title">Memória de Longo Prazo</h3>
                             <p class="card-text">Armazena informações pessoais categorizadas. Versionada com Git e compactação diária automática a partir do histórico.</p>
                         </div>
                     </div>
@@ -494,7 +463,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📊</div>
-                            <h5 class="card-title">Resumo Diário</h5>
+                            <h3 class="card-title">Resumo Diário</h3>
                             <p class="card-text">Briefing matinal automático às 7h com agenda do dia, lembretes pendentes e pagamentos próximos — direto no WhatsApp.</p>
                         </div>
                     </div>
@@ -504,7 +473,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">📄</div>
-                            <h5 class="card-title">Faturas & Invoices</h5>
+                            <h3 class="card-title">Faturas & Invoices</h3>
                             <p class="card-text">Gera invoices profissionais em PDF. Gerenciamento de clientes, envio direto por email e controle de status.</p>
                         </div>
                     </div>
@@ -514,7 +483,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">💼</div>
-                            <h5 class="card-title">Projetos de Software</h5>
+                            <h3 class="card-title">Projetos de Software</h3>
                             <p class="card-text">Kanban boards com pipeline multi-agente: planner, coder, debugger e reviewer trabalham em background.</p>
                         </div>
                     </div>
@@ -524,7 +493,7 @@
                     <div class="card feature-card">
                         <div class="card-body p-4">
                             <div class="feature-icon mb-3">🔍</div>
-                            <h5 class="card-title">Pesquisa na Web</h5>
+                            <h3 class="card-title">Pesquisa na Web</h3>
                             <p class="card-text">Busca informações atualizadas na internet e analisa páginas web em tempo real para responder qualquer pergunta.</p>
                         </div>
                     </div>
@@ -534,10 +503,10 @@
     </section>
 
     <!-- Automations -->
-    <section id="automation">
+    <section id="automation" aria-labelledby="automation-title">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-2">Automations</h2>
+                <h2 id="automation-title" class="section-title mb-2">Automations</h2>
                 <p class="section-subtitle">Trabalha em background mesmo quando você não está falando com ele</p>
             </div>
 
@@ -595,10 +564,10 @@
     </section>
 
     <!-- Architecture -->
-    <section id="architecture">
+    <section id="architecture" aria-labelledby="architecture-title">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-2">Architecture</h2>
+                <h2 id="architecture-title" class="section-title mb-2">Architecture</h2>
                 <p class="section-subtitle">Como o DiDi funciona por dentro</p>
             </div>
 
@@ -609,7 +578,7 @@
                             <div class="d-flex align-items-start gap-3">
                                 <div class="step-number">1</div>
                                 <div>
-                                    <h4 class="mb-1">Mensagem chega via WhatsApp</h4>
+                                    <h3 class="mb-1">Mensagem chega via WhatsApp</h3>
                                     <p class="mb-0">Meta Cloud API via webhook n8n encaminha para o servidor FastAPI via Tailscale VPN.</p>
                                 </div>
                             </div>
@@ -619,7 +588,7 @@
                             <div class="d-flex align-items-start gap-3">
                                 <div class="step-number">2</div>
                                 <div>
-                                    <h4 class="mb-1">Claude Agent SDK processa</h4>
+                                    <h3 class="mb-1">Claude Agent SDK processa</h3>
                                     <p class="mb-0">Sessão streaming persistente. System prompt carrega tools essenciais, skills ativadas sob demanda via prompt caching.</p>
                                 </div>
                             </div>
@@ -629,7 +598,7 @@
                             <div class="d-flex align-items-start gap-3">
                                 <div class="step-number">3</div>
                                 <div>
-                                    <h4 class="mb-1">Tools e MCPs executam</h4>
+                                    <h3 class="mb-1">Tools e MCPs executam</h3>
                                     <p class="mb-0">Google Calendar, Gmail, banco de dados de pagamentos, gerenciador de memória, sistema de viagens — via tools Python e servidores MCP.</p>
                                 </div>
                             </div>
@@ -639,7 +608,7 @@
                             <div class="d-flex align-items-start gap-3">
                                 <div class="step-number">4</div>
                                 <div>
-                                    <h4 class="mb-1">Resposta formatada para WhatsApp</h4>
+                                    <h3 class="mb-1">Resposta formatada para WhatsApp</h3>
                                     <p class="mb-0">Formatada para leitura rápida no celular. Suporta imagens, áudios, documentos, localizações e mensagens interativas.</p>
                                 </div>
                             </div>
@@ -651,38 +620,38 @@
     </section>
 
     <!-- Differentials -->
-    <section>
+    <section aria-labelledby="diff-title">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title mb-2">Diferenciais</h2>
+                <h2 id="diff-title" class="section-title mb-2">Diferenciais</h2>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
                         <div class="feature-icon mx-auto mb-3">🔄</div>
-                        <h5 class="diff-title mb-2">Self-Healing</h5>
+                        <h3 class="diff-title mb-2">Self-Healing</h3>
                         <p class="diff-text">Auto-restart via supervisord, auto-update via Git e resolução de conflitos com IA.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
                         <div class="feature-icon mx-auto mb-3">🧠</div>
-                        <h5 class="diff-title mb-2">Memória Persistente</h5>
+                        <h3 class="diff-title mb-2">Memória Persistente</h3>
                         <p class="diff-text">Lembra informações pessoais, compacta histórico diariamente e aprende preferências.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
                         <div class="feature-icon mx-auto mb-3">⚡</div>
-                        <h5 class="diff-title mb-2">Proativo</h5>
+                        <h3 class="diff-title mb-2">Proativo</h3>
                         <p class="diff-text">Não espera perguntar — envia alertas, resumos e check-ins automaticamente.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="text-center">
                         <div class="feature-icon mx-auto mb-3">🔒</div>
-                        <h5 class="diff-title mb-2">Privado</h5>
+                        <h3 class="diff-title mb-2">Privado</h3>
                         <p class="diff-text">Roda em servidor próprio via Tailscale VPN — seus dados nunca passam por terceiros.</p>
                     </div>
                 </div>
@@ -691,11 +660,11 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-6">
-                    <h2 class="section-title mb-2">Quer saber mais?</h2>
+                    <h2 id="contact-title" class="section-title mb-2">Quer saber mais?</h2>
                     <p class="section-subtitle mb-4">
                         Entre em contato para conhecer melhor o DiDi.
                     </p>
@@ -712,8 +681,10 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="py-4" role="contentinfo">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
